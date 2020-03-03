@@ -1,0 +1,6 @@
+     1                          PRG0102	START
+     2  0000: 1270 1234         	LAD	GR7,#1234
+     3  0002: 8100              	RET
+     4                          	END
+
+      0 Errors

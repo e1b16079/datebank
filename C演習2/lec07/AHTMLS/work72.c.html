@@ -1,0 +1,24 @@
+<!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre onMouseDown="return false;" onSelectStart="return false"><tt><font color="#000000">01:</font> <b><font color="#000080">#include</font></b> <font color="#FF0000">&lt;stdio.h&gt;</font>
+<font color="#000000">02:</font> 
+<font color="#000000">03:</font> <font color="#009900">int</font> <b><font color="#000000">main</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+<font color="#000000">04:</font>   <font color="#009900">int</font> x <font color="#990000">=</font> <font color="#993399">77</font><font color="#990000">;</font>
+<font color="#000000">05:</font>   <font color="#009900">int</font> <font color="#990000">*</font>p <font color="#990000">=</font> <font color="#990000">&amp;</font>x<font color="#990000">;</font>
+<font color="#000000">06:</font> 
+<font color="#000000">07:</font> <i><font color="#9A1900">/* この後に変数 y と q の宣言を追加する。*/</font></i>
+<font color="#000000">08:</font>   <font color="#009900">double</font> y <font color="#990000">=</font> <font color="#993399">3.14</font><font color="#990000">;</font>
+<font color="#000000">09:</font>   <font color="#009900">double</font> <font color="#990000">*</font>q <font color="#990000">=</font> <font color="#990000">&amp;</font>y<font color="#990000">;</font>
+<font color="#000000">10:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"変数  アドレス  サイズ  値</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">);</font>
+<font color="#000000">11:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"x     %p    %d     %d</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>x<font color="#990000">,</font> <b><font color="#0000FF">sizeof</font></b><font color="#990000">(</font>x<font color="#990000">),</font> x<font color="#990000">);</font>
+<font color="#000000">12:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"p     %p    %d     %p</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>p<font color="#990000">,</font> <b><font color="#0000FF">sizeof</font></b><font color="#990000">(</font>p<font color="#990000">),</font> p<font color="#990000">);</font>
+<font color="#000000">13:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"y     %p    %d     %f</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>y<font color="#990000">,</font> <b><font color="#0000FF">sizeof</font></b><font color="#990000">(</font>y<font color="#990000">),</font> y<font color="#990000">);</font>
+<font color="#000000">14:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"q     %p    %d     %p</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>q<font color="#990000">,</font> <b><font color="#0000FF">sizeof</font></b><font color="#990000">(</font>q<font color="#990000">),</font> q<font color="#990000">);</font>
+<font color="#000000">15:</font> <i><font color="#9A1900">/* この後に変数 y と q の出力の printf 関数の呼び出しを追加する。*/</font></i>
+<font color="#000000">16:</font> 
+<font color="#000000">17:</font>   <b><font color="#0000FF">return</font></b> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">18:</font> <font color="#FF0000">}</font>
+<font color="#000000">19:</font> 
+<font color="#000000">20:</font> </tt></pre>

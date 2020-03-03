@@ -1,0 +1,24 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+   int a, c=0, i, j;
+
+   printf("幅：");
+   scanf("%d", &amp;a);
+
+   for(i=1;i&lt;=a;i++){
+    
+    for(j=1;j&lt;=a;j++)
+      if(c%2==0){
+       printf("■");
+       c++;}
+      else{
+       printf("□");
+       c++;}
+    printf("\n");
+    }
+    return 0;
+}
+
+</pre></body></html>

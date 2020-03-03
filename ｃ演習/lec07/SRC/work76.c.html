@@ -1,0 +1,24 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+   int a, b, c, i, j, k;
+
+   printf("指数の指定：");
+   scanf("%d", &amp;a);
+
+   for(i=1;i&lt;6;i++){
+    b=1;
+    c=1; 
+    for(j=1;j&lt;=a;j++){
+      b=b*i;
+    }
+    for(k=1;k&lt;=i;k++){
+      c=c*k;
+    }
+   printf("%dの%d乗=%d   %d!=%d\n", i, a, b, i, c);
+   }
+
+   return 0;
+}
+</pre></body></html>

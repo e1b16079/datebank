@@ -1,0 +1,16 @@
+     1                          PRG0208	START
+     2  0000: 1220 0004         	LAD	GR2,4
+     3  0002: 1031 000B         	LD	GR3,DATA,GR1
+     4  0004: 1042 000B         	LD	GR4,DATA,GR2
+     5  0006: 1132 000B         	ST	GR3,DATA,GR2
+     6  0008: 1141 000B         	ST	GR4,DATA,GR1
+     7  000A: 8100              	RET
+     8                          ;
+     9  000B: 0041              DATA	DC	'A','B','C','D','E'
+        000C: 0042              
+        000D: 0043              
+        000E: 0044              
+        000F: 0045              
+    10                          	END
+
+      0 Errors

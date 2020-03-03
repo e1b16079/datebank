@@ -1,0 +1,19 @@
+#include<stdio.h>
+int main(void){
+
+    int a, i=0;
+
+    printf("表示する個数を入力して下さい：");
+    scanf("%d", &a);
+
+    while(i<a){
+    if(i%3==0){
+      printf("○");}
+    if(i%3==1){
+      printf("☓");}
+    if(i%3==2){
+      printf("△");}
+    i++;}
+    printf("\n");
+    return 0;
+}

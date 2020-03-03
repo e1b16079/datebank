@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main(void){
+
+   int flag[2000], i, j, k;
+
+   for(i=2;i<2000;i++){
+   flag[i]=1;
+   }
+
+   for(i=2;i<2000;i++){
+     for(j=i+1;j<2000;j++){
+       if(j%i==0){
+        flag[j]=0;
+       }
+     }
+   }
+
+   for(k=2;k<2000;k++){
+     if(flag[k]==1){
+       printf("%dは素数です\n",k);
+     }
+    }
+
+
+   return 0;
+}

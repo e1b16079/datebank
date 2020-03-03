@@ -1,0 +1,22 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+    int i, inp, max;
+
+    printf("データ入力を始めます\n");
+    i=1;
+    scanf("%d", &amp;inp);
+    max = inp;
+
+    while(i&lt;5){
+      scanf("%d", &amp;inp);
+      if(inp&gt;max){
+       max = inp;}
+      i++;}
+
+    printf("最大値は%dです。\n", max);
+
+    return 0;
+}
+</pre></body></html>

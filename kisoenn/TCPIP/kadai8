@@ -1,0 +1,42 @@
+./server2
+Waiting for connection
+Waiting for connection
+Connected.
+Waiting for connection
+Connected.
+Send Data    :BOKUHA1DAYO
+
+Send Data    :WATASIHA2DESU
+
+Send Data    :HIRAME8_8
+
+Send Data    :KAREI3_3
+
+Send Data    :
+Send Data    :
+
+
+
+
+
+./client
+Bokuha1dayo               
+BOKUHA1DAYO
+hirame8_8
+HIRAME8_8
+^C
+
+
+
+
+./client
+Watasiha2desu
+WATASIHA2DESU
+karei3_3
+KAREI3_3
+
+
+
+
+
+

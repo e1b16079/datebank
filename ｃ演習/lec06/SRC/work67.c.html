@@ -1,0 +1,30 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+   int i, c=0, sum = 0;
+
+   while(sum&lt;=200&amp;&amp;c&lt;=10){
+   scanf("%d", &amp;i);
+   sum = sum + i;
+   c++;
+   }
+
+   if(sum&gt;200){
+    printf("合計値が200を超えました。\n");
+   }
+   if(c&gt;10){
+    printf("入力データ数が10を超えました。\n");
+   }
+   printf("入力データ数は%dです。\n", c);
+   printf("合計値は%dです。\n", sum);
+   
+   return 0;
+}
+
+
+
+
+
+
+</pre></body></html>

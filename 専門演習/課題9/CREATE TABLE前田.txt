@@ -1,0 +1,52 @@
+CREATE TABLE 商品タイプコード(
+商品タイプコード	VARCHAR2(10 CHAR) PRIMARY KEY,
+商品タイプ名称		VARCHAR2(10 CHAR));
+
+
+CREATE TABLE スポーツ種別コード(
+スポーツ種別コード	VARCHAR2(10 CHAR) PRIMARY KEY,
+スポーツ名称		VARCHAR2(10 CHAR));
+
+
+CREATE TABLE 部売り上げ(
+部課コード		VARCHAR2(10 char) REFERENCES 部署(部課コード) PRIMARY KEY,
+第1四半期売り上げ目標	NUMBER(10,0),
+第2四半期売り上げ目標	NUMBER(10,0),
+第3四半期売り上げ目標	NUMBER(10,0),
+第4四半期売り上げ目標	NUMBER(10,0),
+第1四半期粗利目標	NUMBER(10,0),
+第2四半期粗利目標	NUMBER(10,0),
+第3四半期粗利目標	NUMBER(10,0),
+第4四半期粗利目標	NUMBER(10,0));
+
+
+
+CREATE TABLE 個人売り上げ(
+社員コード		NUMBER(10,0) REFERENCES 社員(社員コード) PRIMARY KEY,
+氏名			VARCHAR2(10 CHAR),
+第1四半期売り上げ目標	NUMBER(10,0),
+第2四半期売り上げ目標	NUMBER(10,0),
+第3四半期売り上げ目標	NUMBER(10,0),
+第4四半期売り上げ目標	NUMBER(10,0),
+第1四半期粗利目標	NUMBER(10,0),
+第2四半期粗利目標	NUMBER(10,0),
+第3四半期粗利目標	NUMBER(10,0),
+第4四半期粗利目標	NUMBER(10,0);
+
+CREATE TABLE 商品(
+商品ID			CHAR(10) PRIMARY KEY,
+商品名称		VARCHAR2(20 CHAR) ,
+標準単価		NUMBER(10,0),
+商品タイプコード	VARCHAR2(10 CHAR) REFERENCES 商品タイプコード(商品タイプコード),
+商品タイプ名称		VARCHAR2(10 CHAR),
+スポーツ種別コード	VARCHAR2(10 CHAR) REFERENCES スポーツ種別コード(スポーツ種別コード),
+スポーツ名称		VARCHAR2(10 CHAR),
+販売可否		NUMBER(1,0) NOT NULL);
+
+
+CREATE TABLE 明細(
+伝票ID		NUMBER(10,0) PRIMARY KEY,
+受注ID	NUMBER(10,0) REFERENCES 受注(受注ID),
+商品ID	CHAR(10) REFERENCES 商品(商品ID),
+受注数量	NUMBER(10,0) NOT NULL,
+販売単価	NUMBER(10,0)NOT NULL);

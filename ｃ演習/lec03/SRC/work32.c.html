@@ -1,0 +1,18 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+    int day;
+
+    printf("１ヶ月間に使用する日数を入力して下さい：");
+    scanf("%d",&amp;day);
+
+    if(day*460&gt;9000)
+      printf("%d日分では、定期券の方がお得です。\n",day);
+    else
+      printf("%d日分では、往復切符の方がお得です。\n",day);
+    
+    return 0;
+
+}
+</pre></body></html>

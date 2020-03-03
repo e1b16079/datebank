@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://www.info.oit.ac.jp/~kobayasi/sec3/exercise2007.htm -->
+<HTML><HEAD><TITLE>「情報セキュリティ」演習課題と解答例</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=shift_jis">
+<META content="MSHTML 6.00.2900.3243" name=GENERATOR>
+<STYLE>@font-face {
+	font-family: Wingdings;
+}
+@font-face {
+	font-family: ＭＳ 明朝;
+}
+@font-face {
+	font-family: Century;
+}
+@font-face {
+	font-family: ＭＳ Ｐゴシック;
+}
+@font-face {
+	font-family: @ＭＳ 明朝;
+}
+@font-face {
+	font-family: @ＭＳ Ｐゴシック;
+}
+@page Section1 {size: 595.3pt 841.9pt; margin: 99.25pt 30.0mm 30.0mm 30.0mm; layout-grid: 18.0pt; }
+P.MsoNormal {
+	TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 10.5pt; MARGIN: 0mm 0mm 0pt; FONT-FAMILY: Century; TEXT-ALIGN: justify
+}
+LI.MsoNormal {
+	TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 10.5pt; MARGIN: 0mm 0mm 0pt; FONT-FAMILY: Century; TEXT-ALIGN: justify
+}
+DIV.MsoNormal {
+	TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 10.5pt; MARGIN: 0mm 0mm 0pt; FONT-FAMILY: Century; TEXT-ALIGN: justify
+}
+P.MsoFooter {
+	TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 10.5pt; MARGIN: 0mm 0mm 0pt; LAYOUT-GRID-MODE: char; FONT-FAMILY: Century; TEXT-ALIGN: justify
+}
+LI.MsoFooter {
+	TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 10.5pt; MARGIN: 0mm 0mm 0pt; LAYOUT-GRID-MODE: char; FONT-FAMILY: Century; TEXT-ALIGN: justify
+}
+DIV.MsoFooter {
+	TEXT-JUSTIFY: inter-ideograph; FONT-SIZE: 10.5pt; MARGIN: 0mm 0mm 0pt; LAYOUT-GRID-MODE: char; FONT-FAMILY: Century; TEXT-ALIGN: justify
+}
+DIV.Section1 {
+	page: Section1
+}
+OL {
+	MARGIN-BOTTOM: 0mm
+}
+UL {
+	MARGIN-BOTTOM: 0mm
+}
+</STYLE>
+</HEAD>
+<BODY lang=JA style="TEXT-JUSTIFY-TRIM: punctuation">
+<DIV class=Section1 style="LAYOUT-GRID:  18pt none">
+<P class=MsoNormal><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">「情報セキュリティ」演習課題と解答例</SPAN></P>
+<P class=MsoNormal><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 21pt; TEXT-INDENT: -21pt"><SPAN 
+lang=EN-US>１．</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">暗号とその適用</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（１）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">送信者</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が公開鍵暗号方式を用いて暗号化を行い、その暗号文を受信者</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">に送信し、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が復号するものとする。この場合の暗号化、復号において使用する鍵の所有者、鍵の種類を述べよ。また、そのような使い方が妥当であることの理由を記述せよ。（第１回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 35.9pt; TEXT-INDENT: 9.05pt"><SPAN 
+lang=EN-US>A</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">が暗号化で使用する鍵は、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵で、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">が復号で使用するのは</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の秘密鍵である。その理由は以下の通り。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 35.9pt; TEXT-INDENT: 9.05pt"><SPAN 
+lang=EN-US>A</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">が暗号文を</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">に送信したのであるから、暗号文は</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">のみが復号できる必要がある。従って、復号に使用できる鍵は</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">のみが所有する秘密鍵でなければならない。公開鍵暗号方式では秘密鍵、公開鍵はペアで使用されるため、復号に</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の秘密鍵を使用したのであれば、暗号化には</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵を使用しなければならない。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（２）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">送信者</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が公開鍵暗号方式を用いてディジタル署名を作成し（文書のハッシュ値の暗号化）、その署名を受信者</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">に送信し、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が署名検証（署名の復号結果と文書のハッシュ値の照合）するものとする。この場合の署名、署名検証において使用する鍵の所有者、鍵の種類を述べよ。また、そのような使い方が妥当であることの理由を記述せよ。（第１回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 35.9pt; TEXT-INDENT: 9.05pt"><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">がディジタル署名の作成（暗号化）で使用する鍵は、</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の秘密鍵で、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が署名検証（復号）で使用するのは</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵である。その理由は以下の通り。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 35.9pt; TEXT-INDENT: 9.05pt"><SPAN 
+lang=EN-US>A</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の署名であるから、それは</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">だけが行える必要がある。従って、その場合の鍵は</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">だけが使用できる秘密鍵でなければならない。公開鍵暗号方式では秘密鍵、公開鍵はペアで使用されるため、署名作成に</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の秘密鍵を使用したのであれば、署名検証には</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵を使用しなければならない。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（３）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">共通鍵暗号方式には、秘密情報の送信以前に、他の誰にも知られずに送受信者間で共通鍵を共有しなければならないという問題点がある。この問題点は公開鍵暗号方式を併用することにより、解決できる。この解決方法として、秘密情報を安全に送信するまでの手順を説明せよ。（第２回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 35.9pt; TEXT-INDENT: 9.05pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">送受信者のどちらか一方で作成した共通鍵を他方の公開鍵を使用し、暗号化した後、他方に送信する。受信側では自分の秘密鍵でそれを復号し、共通鍵を取り出す。このようにして共通鍵を共有した後、この共通鍵を使用し、一方が文書などを暗号化し、それを他方に送信することにより、安全に文書などの送信を行う。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 35.9pt; TEXT-INDENT: 9.05pt"><SPAN 
+lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 21pt; TEXT-INDENT: -21pt"><SPAN 
+lang=EN-US>２．</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">電子認証と</SPAN><SPAN 
+lang=EN-US>PKI</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（１）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">共通鍵暗号を用いても、秘密情報を生の形で通信路に流すことなく、認証が行える。共通鍵暗号を用いて、相手認証を行う手順を箇条書きで記述せよ。但し、認証側、被認証側双方で同一共通鍵を１つ保持していることを前提とする。（第３回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">認証側で乱数（チャレンジ）を生成し、被認証側へ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">被認証側でチャレンジを共通鍵で暗号化し、それを認証側へ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">認証側で受信データを共通鍵で復号し、元のチャレンジと比較</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">比較結果が一致していれば、認証</SPAN><SPAN 
+lang=EN-US>OK</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">と判断</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（２）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">ハッシュを用いても、秘密情報を生の形で通信路に流すことなく、認証が行える。ハッシュを用いて、相手認証を行う手順を箇条書きで記述せよ。但し、認証側、被認証側双方で共有秘密を１つ保持していることを前提とする。（第３回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">認証側で乱数（チャレンジ）を生成し、被認証側へ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">被認証側で共有秘密とチャレンジを連結し、そのハッシュを取り、ハッシュ値を認証側へ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">認証側でも共有秘密とチャレンジを連結し、そのハッシュを取り、受信データと比較</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">比較結果が一致していれば、認証</SPAN><SPAN 
+lang=EN-US>OK</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">と判断</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（３）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">から</SPAN><SPAN lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">へディジタル署名付きの文書を送信し、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">が署名検証を行うものとする。</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">は</SPAN><SPAN 
+lang=EN-US>CA</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵証明書を所有しているとして、</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が公開鍵、秘密鍵を作成する段階から、</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵証明書とディジタル署名付きの文書を</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">へ送信し、受信文書が</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">によって作成された文書であることを</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が確認するまでの手順を記述せよ。（第４回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>①<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が公開鍵、秘密鍵を作成した後、公開鍵を</SPAN><SPAN 
+lang=EN-US>CA</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">へ登録し、公開鍵証明書の発行を受ける。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>②<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">は文書を作成した後、</SPAN><SPAN lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の秘密鍵で、文書のディジタル署名を作成する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>③<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">は</SPAN><SPAN lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵証明書とディジタル署名付きの文書を</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">に送信する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>④<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">はこれらを受信する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>⑤<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>B</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">は</SPAN><SPAN lang=EN-US>CA</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵証明書から</SPAN><SPAN lang=EN-US>CA</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵を取り出し、その公開鍵で、</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵証明書の署名を検証する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>⑥<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">検証結果が正常であれば、</SPAN><SPAN 
+lang=EN-US>B</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">は</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵証明書から</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の公開鍵を取り出し、その公開鍵で、受信文書の署名を検証する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 60pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US>⑦<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">検証結果が正常であれば、送信文書は</SPAN><SPAN 
+lang=EN-US>A</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">が作成したものと確認できる。</SPAN></P>
+<P class=MsoNormal><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 21pt; TEXT-INDENT: -21pt"><SPAN 
+lang=EN-US>３．</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">整数論</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（１）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">オイラーの関数φ</SPAN><SPAN 
+lang=EN-US>(15) </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を求めよ。但し、計算過程も明示のこと。（第５回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>1</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≦</SPAN><SPAN lang=EN-US> i </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≦</SPAN><SPAN lang=EN-US>15</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　を満たす集合</SPAN><SPAN lang=EN-US>Z</SPAN><SUB><SPAN 
+lang=EN-US>15</SPAN></SUB><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">は</SPAN><SPAN 
+lang=EN-US> </SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>Z</SPAN><SUB><SPAN 
+lang=EN-US>15</SPAN></SUB><SPAN lang=EN-US> ={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+12, 13, 14, 15}</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>(15, i) = 1 
+</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">を満たす</SPAN><SPAN lang=EN-US> i 
+</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の集合</SPAN><SPAN 
+lang=EN-US>Z</SPAN><SUB><SPAN lang=EN-US>15</SPAN></SUB><SPAN 
+lang=EN-US>*</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">を求める</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>15</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を因数分解すると</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>15=3</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・</SPAN><SPAN lang=EN-US>5</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>Z</SPAN><SUB><SPAN 
+lang=EN-US>15</SPAN></SUB><SPAN lang=EN-US> </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">から、</SPAN><SPAN lang=EN-US>3</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">や</SPAN><SPAN lang=EN-US>5</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">の倍数を除去すると</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>Z</SPAN><SUB><SPAN 
+lang=EN-US>15</SPAN></SUB><SPAN lang=EN-US>* = {1, 2, 4, 7, 8, 11, 13, 
+14}</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">従って、φ</SPAN><SPAN lang=EN-US>(15) = 8</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（２）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>8</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を法とする完全剰余系</SPAN><SPAN 
+lang=EN-US>R</SPAN><SUB><SPAN lang=EN-US>8</SPAN></SUB><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">、既約剰余系</SPAN><SPAN lang=EN-US>R</SPAN><SUB><SPAN 
+lang=EN-US>8</SPAN></SUB><SPAN lang=EN-US>*</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を求めよ。（第５回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">完全剰余系</SPAN><SPAN lang=EN-US>R</SPAN><SUB><SPAN 
+lang=EN-US>8</SPAN></SUB><SPAN lang=EN-US>={0, 1, 2, 3, 4, 5, 6, 7}</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>8</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を因数分解すると</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>8=2</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・</SPAN><SPAN lang=EN-US>2</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・</SPAN><SPAN lang=EN-US>2</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>R</SPAN><SUB><SPAN 
+lang=EN-US>8</SPAN></SUB><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">から、</SPAN><SPAN 
+lang=EN-US>2</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の倍数を除去すると</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">既約剰余系</SPAN><SPAN lang=EN-US>R</SPAN><SUB><SPAN 
+lang=EN-US>8</SPAN></SUB><SPAN lang=EN-US>*={1, 3, 5, 7}</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（３）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">ユークリッドの互除法を適用し、以下の式における</SPAN><SPAN 
+lang=EN-US>5</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">の逆数</SPAN><SPAN 
+lang=EN-US>b</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を求めよ。但し、計算過程も明示のこと。（第５回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US>5b </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US> 1 mod 7</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>5b </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US> 1 mod 
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">恒等的に成り立つ式　</SPAN><SPAN lang=EN-US>7b </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US> 0</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　</SPAN><SPAN lang=EN-US>mod 
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(2)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>5</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">と</SPAN><SPAN lang=EN-US>7</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">にユークリッドの互除法を適用</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>7=1</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・</SPAN><SPAN 
+lang=EN-US>5+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(3)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>5=2</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・</SPAN><SPAN 
+lang=EN-US>2+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(4)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt"><SPAN lang=EN-US>2=2</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・</SPAN><SPAN lang=EN-US>1+0</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>(3)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">より、</SPAN><SPAN lang=EN-US>(2) &#8211; (1)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　</SPAN><SPAN lang=EN-US>2b </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US> &#8211;1 mod 
+7&nbsp;&nbsp;&nbsp; (5)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>(4)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">より、×</SPAN><SPAN lang=EN-US>2</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が必要　</SPAN><SPAN lang=EN-US>2 </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN> <SPAN lang=EN-US>2 mod 7&nbsp;&nbsp;&nbsp; 
+(6)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>(4)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">より、</SPAN><SPAN lang=EN-US>(5)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=EN-US>(6)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　</SPAN><SPAN 
+style="FONT-SIZE: 18pt; COLOR: black; FONT-FAMILY: 'Times New Roman'"> 
+</SPAN><SPAN lang=EN-US>4b </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US> &#8211; 2 mod 
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(7)</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US>(4)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">より、</SPAN><SPAN lang=EN-US>(1) &#8211; (7)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　</SPAN><SPAN 
+style="FONT-SIZE: 18pt; COLOR: black; FONT-FAMILY: 'Times New Roman'"> 
+</SPAN><SPAN lang=EN-US>b </SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN> 
+<SPAN lang=EN-US>3 mod 7</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 27pt"><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 21pt; TEXT-INDENT: -21pt"><SPAN 
+lang=EN-US>４．</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">公開鍵暗号と</SPAN><SPAN 
+lang=EN-US>RSA</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（１）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">相異なる２つの素数を</SPAN><SPAN 
+lang=EN-US>p=3</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">、</SPAN><SPAN 
+lang=EN-US>q=19</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">とする。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -9pt"><SPAN 
+lang=EN-US>(a)<SPAN style="FONT: 7pt 'Times New Roman'"> </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">この時、</SPAN><SPAN lang=EN-US>RSA</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">暗号の公開鍵</SPAN><SPAN lang=EN-US>e</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">、</SPAN><SPAN lang=EN-US>n</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">のうち、</SPAN><SPAN lang=EN-US>e=5</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">として問題ないことを示し、残りの</SPAN><SPAN 
+lang=EN-US>n</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">を求めよ。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -9pt"><SPAN 
+lang=EN-US>(b)<SPAN style="FONT: 7pt 'Times New Roman'"> </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">また、秘密鍵</SPAN><SPAN lang=EN-US>d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">をユークリッドの互除法に基づき計算せよ。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -9pt"><SPAN 
+lang=EN-US>(c)<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">更に、平文</SPAN><SPAN 
+lang=EN-US>M=46</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">とした場合の暗号文を求めよ。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -9pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">何れも、計算過程を記述すること。（第６回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN 
+lang=EN-US>k=LCM(p-1,q-1)=LCM(3-1,19-1)=LCM(2,18)=18</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US>e=5 </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">は条件</SPAN><SPAN lang=EN-US>(k,e)=1</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を満たすので、問題なし。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US>n=pq=3</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=EN-US>19=57</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">従って、公開鍵は</SPAN><SPAN lang=EN-US>n=57</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">、</SPAN><SPAN lang=EN-US>e=5</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US>ed</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>1 mod k</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">より、　</SPAN><SPAN lang=EN-US>5d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>1 mod 18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　①</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">恒等的に成り立つ式　</SPAN><SPAN lang=EN-US>18d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>0 mod 18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　②</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US>5</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">と</SPAN><SPAN lang=EN-US>18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">にユークリッドの互除法を適用すると</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=EN-US>18=3</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=EN-US>5+3</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=EN-US>5=1</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=EN-US>3+2</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=EN-US>3=1</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=EN-US>2+1</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=EN-US>2=2</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=EN-US>1</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">従って、</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">上記より、×</SPAN><SPAN lang=EN-US>3</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が必要故　</SPAN><SPAN lang=EN-US>3</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>3 mod 18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　③</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">①×③　</SPAN><SPAN lang=EN-US>15d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>3 mod 18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　④</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">②－④　</SPAN><SPAN lang=EN-US>3d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡－</SPAN><SPAN lang=EN-US>3 mod 18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　⑤</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">①－⑤　</SPAN><SPAN lang=EN-US>2d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>4 mod 18</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">　⑥</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">⑤－⑥　</SPAN><SPAN lang=EN-US>d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡－</SPAN><SPAN lang=EN-US>7 mod 18</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">余りを正の整数にすると</SPAN><SPAN lang=EN-US>d</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=EN-US>11 mod 18</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">従って、秘密鍵</SPAN><SPAN lang=EN-US>d=11</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><A name=OLE_LINK1><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">公開鍵</SPAN><SPAN lang=EN-US>n=57</SPAN></A><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">、</SPAN><SPAN lang=EN-US>e=5</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">による暗号化</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=SV>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=SV>M</SPAN><SUP><SPAN 
+lang=SV>e</SPAN></SUP><SPAN lang=SV> mod n = 46</SPAN><SUP><SPAN 
+lang=SV>5</SPAN></SUP><SPAN lang=SV> mod 57</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=SV>46</SPAN><SUP><SPAN 
+lang=SV>5</SPAN></SUP><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN 
+lang=SV>((</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN 
+lang=SV>11)</SPAN><SUP><SPAN lang=SV>2</SPAN></SUP><SPAN 
+lang=SV>)</SPAN><SUP><SPAN lang=SV>2</SPAN></SUP><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=SV>(</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN lang=SV>11) =121</SPAN><SUP><SPAN 
+lang=SV>2</SPAN></SUP><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN 
+lang=SV>(</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN 
+lang=SV>11)</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN 
+lang=SV>7</SPAN><SUP><SPAN lang=SV>2</SPAN></SUP><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=SV>(</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN lang=SV>11)= 49</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=SV>(</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN lang=SV>11)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=SV>(</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN lang=SV>8)</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">×</SPAN><SPAN lang=SV>(</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">－</SPAN><SPAN lang=SV>11)=88</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">≡</SPAN><SPAN lang=SV>31</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">即ち、暗号文</SPAN><SPAN lang=EN-US>C=31</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt"><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 21pt; TEXT-INDENT: -21pt"><SPAN 
+lang=EN-US>５．</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">ディジタル署名とハッシュ（総合課題）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（１）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN lang=EN-US>Web</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">サーバ使用時にクライアントから個人情報を送信する場合、クライアント、サーバ間で暗号通信が行われる場合がある。この際、</SPAN><SPAN 
+lang=EN-US>Web</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">サーバは自身の秘密鍵</SPAN><SPAN 
+lang=EN-US>Ss</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">、公開鍵</SPAN><SPAN 
+lang=EN-US>Ps</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">及び公開鍵証明書を所有しており、共通鍵生成機能、暗号化／復号機能を具備している。クライアントは自身の秘密鍵、公開鍵を持たないが、共通鍵生成機能、暗号化／復号機能があるとして、暗号通信の手順（どちらで何の鍵を生成するか、どの鍵で暗号化した何をどちらからどちらへ送信するか、どちらでどの鍵を使用して何を復号するか）を箇条書きで記述せよ。但し、個人情報は情報量が多いため、公開鍵暗号方式による暗号化は行えないものとする。（例題）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt; TEXT-INDENT: -18pt"><A 
+name=OLE_LINK13><SPAN lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">サーバからクライアントに公開鍵</SPAN><SPAN 
+lang=EN-US>Ps</SPAN></A><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が格納された公開鍵証明書を送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">クライアントは公開鍵証明書から公開鍵</SPAN><SPAN 
+lang=EN-US>Ps</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">を取り出す</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">クライアントは共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を生成し、個人情報を共通鍵</SPAN><SPAN lang=EN-US>C </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で暗号化すると共に、共通鍵</SPAN><SPAN lang=EN-US>C </SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を公開鍵</SPAN><SPAN lang=EN-US>Ps</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で暗号化し、これらをサーバへ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">サーバは暗号化された共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を秘密鍵</SPAN><SPAN lang=EN-US>Ss</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で復号し、共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を取り出し、暗号化された個人情報を共通鍵</SPAN><SPAN 
+lang=EN-US>C</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">で復号する</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（２）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">サーバは自身の秘密鍵</SPAN><SPAN 
+lang=EN-US>Ss</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">、公開鍵</SPAN><SPAN 
+lang=EN-US>Ps</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">及び公開鍵証明書を所有している。サーバでクライアント用の秘密鍵</SPAN><SPAN 
+lang=EN-US>Sc</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">、公開鍵</SPAN><SPAN 
+lang=EN-US>Pc</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を作成したとして、この秘密鍵</SPAN><SPAN 
+lang=EN-US>Sc</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を安全にクライアントへ送信する場合の手順（どちらで何の鍵を生成するか、どの鍵で暗号化した何をどちらからどちらへ送信するか、どちらでどの鍵を使用して何を復号するか、など）を箇条書きで記述せよ。但し、サーバ、クライアント共に、共通鍵生成プログラム、共通鍵暗号プログラム、公開鍵暗号プログラムが実装されているが、クライアントには公開鍵／秘密鍵の生成機能はないものとする。（第７回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・サーバからクライアントに公開鍵</SPAN><SPAN 
+lang=EN-US>Ps</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">が格納された公開鍵証明書を送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -9pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・クライアントで、共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を生成</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -9pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・クライアントで、公開鍵証明書内の公開鍵</SPAN><SPAN 
+lang=EN-US>Ps</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">で共通鍵</SPAN><SPAN 
+lang=EN-US>C</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">を暗号化し、サーバへ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -9pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・サーバで、秘密鍵</SPAN><SPAN lang=EN-US>Ss</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で受信データを復号し、共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を取り出す</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 45pt; TEXT-INDENT: -9pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">・サーバで、共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で秘密鍵</SPAN><SPAN lang=EN-US>Sc</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">を暗号化し、クライアントへ送信</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 54pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">クライアントで、共通鍵</SPAN><SPAN lang=EN-US>C</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で受信データを復号し、秘密鍵</SPAN><SPAN 
+lang=EN-US>Sc</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">を取り出す</SPAN></P>
+<P class=MsoNormal><SPAN lang=EN-US></SPAN>&nbsp;</P>
+<P class=MsoNormal style="MARGIN-LEFT: 21pt; TEXT-INDENT: -21pt"><SPAN 
+lang=EN-US>６．</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">ネットワーク接続時の脅威</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 36pt; TEXT-INDENT: -36pt"><SPAN 
+lang=EN-US>（１）<SPAN style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">ウィルス（広義）がネットワークから侵入する経路（手口）を分類し、説明せよ。（第８回）</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 18pt"><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">解答</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 39pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">プログラムやデータのダウンロード時に、ウィルスが侵入する場合がある。ダウンロードされるプログラムやデータに紛れてウィルスが侵入する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 39pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+lang=EN-US>Web</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">サイトにアクセスしただけで、ウィルスが侵入する場合がある。</SPAN><SPAN 
+lang=EN-US>HTML</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">テキストのスクリプト部分に、ブラウザなどのセキュリティホールを突くウィルスが潜んでいると、ブラウザで</SPAN><SPAN 
+lang=EN-US>Web</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">ページを表示しただけで、ウィルスに感染する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 39pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">メールの添付ファイルによりウィルスが侵入する場合がある。添付ファイル自体がウィルスである場合や添付ファイルが</SPAN><SPAN 
+lang=EN-US>Word</SPAN><SPAN style="FONT-FAMILY: 'ＭＳ 明朝'">や</SPAN><SPAN 
+lang=EN-US>Excel</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">のテキストであっても、マクロウィルスが潜んでいる場合がある。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 39pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+lang=EN-US>HTML</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">メールによりウィルスが侵入する場合がある。受信した</SPAN><SPAN 
+lang=EN-US>HTML</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">テキストのスクリプト部分に、ブラウザなどのセキュリティホールを突くウィルスが潜んでいると、メールを開いた（プレビューした）だけで、ウィルスに感染する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 39pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">ネットワークに接続しただけで、ウィルスが侵入する場合がある。通信サービスを提供するソフトウェアにセキュリティホールがあると、その弱点を突いて、ウィルスが侵入する。</SPAN></P>
+<P class=MsoNormal style="MARGIN-LEFT: 39pt; TEXT-INDENT: -18pt"><SPAN 
+lang=EN-US style="FONT-FAMILY: 'ＭＳ 明朝'">・<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">無断で無線</SPAN><SPAN lang=EN-US>LAN</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">に接続されたコンピュータからウィルスが侵入する場合がある。無線</SPAN><SPAN 
+lang=EN-US>LAN</SPAN><SPAN 
+style="FONT-FAMILY: 'ＭＳ 明朝'">で、暗号通信などの設定を怠ると不正な接続が行われ、攻撃される恐れがある。</SPAN></P>
+<P class=MsoNormal><SPAN lang=EN-US></SPAN>&nbsp;</P></DIV></BODY></HTML>

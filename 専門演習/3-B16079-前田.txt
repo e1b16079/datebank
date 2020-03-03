@@ -1,0 +1,724 @@
+　　　　　　　　　　情報システム専門演習 報告書
+　　　　　　　　　　　　　（2018年度　後期）
+
+
+
+
+課題番号      課題-(3) 
+
+担当教員名　　：
+
+クラス名（Ａ or Ｂ）　＿＿＿B＿＿＿
+
+
+報告者名
+
+学生番号：e1b16079        氏    名：前田　剛志
+
+
+
+***************************************************************
+
+
+情報システム専門演習     課題（３） 
+                                                     2018.10.15
+
+第0部
+
+1) テキスト67-68ページに記載されているSQLを少し簡略化した下記【SQL2】～【SQL11】に対し、
+　 次の例にならって、その内容を日本語で表現せよ。
+
+　　[例：【SQL1】の場合]
+　　・CUST_IDの値が集合{1, 2}に含まれる顧客の名前(CUST_NAME)を出力せよ。　OR
+　　　CUST_IDの値が１もしくは2である顧客の名前(CUST_NAME)を出力せよ。
+
+
+　【SQL1】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID IN (1, 2);
+
+
+
+　【SQL2】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID = SOME (1, 2);
+
+　　【回答欄】
+CUST_IDの値が１もしくは2である顧客の名前(CUST_NAME)を出力せよ。
+
+
+
+　【SQL3】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID > SOME (1, 2);
+
+　　【回答欄】
+CUST_IDの値が１もしくは2のどちらかより上の顧客の名前(CUST_NAME)を出力せよ。
+
+
+
+　【SQL4】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID < SOME (1, 2);
+
+　　【回答欄】
+CUST_IDの値が１もしくは2のどちらかより下の顧客の名前(CUST_NAME)を出力せよ。
+
+
+
+
+　【SQL5】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID > ALL (1, 2);
+
+　　【回答欄】
+CUST_IDの値が１と2両方より上の顧客の名前(CUST_NAME)を出力せよ。
+
+
+
+
+　【SQL6】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID < ALL (1, 2);
+
+　　【回答欄】
+CUST_IDの値が１と2両方より下の顧客の名前(CUST_NAME)を出力せよ。
+
+
+
+　【SQL7】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID = ALL (1, 2);
+
+　　【回答欄】
+CUST_IDの値が１,2の顧客の名前(CUST_NAME)を出力せよ。
+
+
+
+
+　【SQL8】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID 
+　　　　　　　= ALL (1, 1,1,1,1,1,1,1,1,1,1);
+
+　　【回答欄】
+CUST_IDの値が１の顧客の名前(CUST_NAME)を出力せよ
+
+
+
+　【SQL9】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   CUST_ID < ALL (2,3,4,5);
+
+　　【回答欄】
+CUST_IDの値が2,3,4,5の顧客の名前(CUST_NAME)を出力せよ
+
+
+
+　【SQL10】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   EXISTS (SELECT * FROM CUSTOMER
+ 　　               WHERE CUST_ID = 6  );
+
+　　【回答欄】
+CUST_IDの値6が存在すればの顧客の名前(CUST_NAME)を出力せよ
+
+
+
+　【SQL11】
+　　SELECT  CUST_NAME
+　　FROM    CUSTOMER
+　　WHERE   NOT EXISTS (SELECT * FROM CUSTOMER
+   　　                 WHERE CUST_ID = 6     );
+
+　　【回答欄】
+CUST_IDの値6が存在しなければの顧客の名前(CUST_NAME)を出力せよ
+
+
+
+
+
+
+2) GOODSとACCOUNTの内容を下記の通りとしたとき、次のSQLの実行結果を自分で考えて書け。
+　　下記SQLを実行させても答えは出てきません。                     ~~~~~~~~~~~~
+
+
+　　SELECT GOODS_NAME  FROM  GOODS
+　　WHERE  3 < (SELECT COUNT(*) 
+                FROM ACCOUNT  
+                WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID);
+
+
+　　GOODS
+　　 GOODS_ID GOODS_NAME           UNIT_PRICE
+　　--------- -------------------- ----------
+　　        1 フライパン                  500
+　　        2 両手鍋                      800
+　　        3 寸胴鍋                     1800
+
+　　ACCOUNT
+　　ACCOUNT_ID   SLIP_ID  GOODS_ID       QTY
+　　---------- --------- --------- ---------
+　　         1         1         2        10
+　　         2         1         3         5
+　　         3         1         1        15
+　　         4         2         1        20
+　　         5         3         3         5
+　　         6         3         3         5
+　　         7         4         1        15
+　　         8         4         2        10
+　　         9         5         3         7
+
+
+　　【回答欄】
+
+GOODS_NAME 
+-------------
+寸胴鍋 
+
+
+
+
+
+
+
+第１部：テーブルEMP、DEPT、SALGRADEを使って以下の質問のＳＱＬ文を作成せよ。
+
+１．部門の所在地がNEW YORKである社員の社員番号と氏名を出力せよ。
+    （副問合せを使ったSQL文を作成すること）
+
+　SQL> SELECT EMPNO, ENAME
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO
+  4           FROM DEPT
+  5           WHERE LOC='NEW YORK'
+  6             );
+
+     EMPNO ENAME
+---------- --------------------
+      7782 CLARK
+      7839 KING
+      7934 MILLER
+
+
+２．給与が全社員の平均給与より高い社員の社員番号と氏名と給与を出力せよ。
+
+SQL> SELECT EMPNO 社員番号, ENAME 氏名,SAL 給与
+  2  FROM EMP
+  3  WHERE SAL>(SELECT AVG(SAL)
+  4        FROM EMP);
+
+  社員番号 氏名                       給与
+---------- -------------------- ----------
+      7566 JONES                      2975
+      7698 BLAKE                      2850
+      7782 CLARK                      2450
+      7788 SCOTT                      3000
+      7839 KING                       5000
+      7902 FORD                       3000
+
+6行が選択されました。
+
+３．サラリーのGRADEが３の人の社員番号と氏名を出力せよ。
+    （副問合せを使わないSQLと使うSQLの２つを作れ）
+
+[1]SELECT EMPNO 社員番号, ENAME 氏名
+FROM EMP
+WHERE SAL BETWEEN (SELECT LOSAL
+		   FROM SALGRADE
+		   WHERE GRADE=3
+		   )
+		   AND
+		   (SELECT HISAL
+		   FROM SALGRADE
+		   WHERE GRADE=3);
+
+
+[2]SELECT EMPNO 社員番号, ENAME 氏名
+FROM EMP ,SALGRADE
+WHERE GRADE=3
+AND SAL BETWEEN LOSAL AND HISAL;
+
+ 社員番号 氏名
+--------- --------------------
+     7499 ALLEN
+     7844 TURNER
+
+
+４．SCOTTのサラリーGRADEは何ですか？
+   （副問合せを使う必要はない）
+
+SQL> SELECT  ENAME 氏名,GRADE
+  2  FROM EMP ,SALGRADE
+  3  WHERE ENAME='SCOTT'
+  4  AND SAL<=HISAL
+  5  AND LOSAL<=SAL;
+
+氏名                      GRADE
+-------------------- ----------
+SCOTT                         4
+
+５．勤務地がNEW YORKもしくはCHICAGOであって、給与(SAL)が2000以上である人の名前を出力せよ。
+　　但し、SELECT ... FROM ... WHERE ... SOME ( SELECT... ) を使うこと。
+
+
+SQL> SELECT ENAME
+  2  FROM EMP NATURAL JOIN DEPT
+  3  WHERE LOC = SOME(SELECT LOC
+  4          FROM DEPT
+  5          WHERE LOC='NEW YORK'OR LOC='CHICAGO')
+  6  AND SAL>=2000;
+
+ENAME
+--------------------
+KING
+CLARK
+BLAKE
+
+
+６．誰かの上司になっている人で、職種がMANAGERでない人の名前と職種を出力せよ。
+　　（結合方法の異なる２通りのSQL文を考えること）
+
+[1]SELECT DISTINCT A.ENAME 名前,A.JOB 職種
+FROM EMP A, EMP B
+WHERE A.EMPNO = B.MGR
+AND A.JOB!='MANAGER';
+
+
+[2]SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A
+JOIN EMP B ON (A.EMPNO = B.MGR)
+WHERE A.JOB!='MANAGER';
+
+７．誰かの上司の上司になっている人で、JOBがPRESIDENTでない人の氏名とJOB（職種）を出力せよ。
+
+[1]
+SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A, EMP B, EMP C
+WHERE A.EMPNO = B.MGR
+AND B.EMPNO = C.MGR
+AND A.JOB!='MANAGER';
+
+[2]
+SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A JOIN EMP B ON (A.EMPNO = B.MGR)
+JOIN EMP C ON (B.EMPNO = C.MGR)
+WHERE A.JOB!='MANAGER';
+
+
+８．職種がSALESMANである人の氏名、職種、DEPTNOの全データと、DEPTNOが10である人の氏名、職
+　　種、DEPTNOの全データを、重複結果を１つにまとめて表示せよ。
+
+SQL> SELECT DISTINCT ENAME 氏名,JOB 職種,DEPTNO
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN'
+  4  OR DEPTNO=10;
+
+氏名                 職種                   DEPTNO
+-------------------- ------------------ ----------
+ALLEN                SALESMAN                   30
+KING                 PRESIDENT                  10
+TURNER               SALESMAN                   30
+MARTIN               SALESMAN                   30
+WARD                 SALESMAN                   30
+CLARK                MANAGER                    10
+MILLER               CLERK                      10
+
+
+９．SALESMANで、給与が最も高いCLERKよりも多くの給与を得ている人の名前を出力せよ。
+
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN'
+  4  AND SAL>(SELECT MAX(SAL)
+  5      FROM EMP
+  6      WHERE JOB='CLERK'
+  7      );
+
+ENAME
+--------------------
+ALLEN
+TURNER
+
+
+10．この会社に現在所属している社員の中で、誰よりも早く採用された人の名前を出力せよ。
+　　但し、２種類以上のSQL文を考えること。
+
+[1]SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE HIREDATE=ALL(SELECT MIN(HIREDATE)
+  4             FROM EMP);
+
+
+[2]SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE HIREDATE=SOME(SELECT MIN(HIREDATE)
+  4             FROM EMP);
+
+ENAME
+--------------------
+SMITH
+
+
+11．職種がMANAGER、PRESIDENT以外でありながら当該部門の最も給与の低いMANAGER以上の給与を得
+　　ている人の名前と職種を出力せよ。
+　　「職種がMANAGER、PRESIDENT以外でありながら全社で最も給与の低いMANAGER以上の給与を得て
+　　いる人」を出力したらダメです。
+
+
+SQL> SELECT ENAME 名前, JOB 職種
+  2  FROM EMP
+  3  WHERE JOB NOT IN ('MANAGER','PRESIDENT')
+  4  AND SAL>(SELECT MIN(SAL)
+  5      FROM EMP
+  6      WHERE JOB='MANAGER');
+
+名前                 職種
+-------------------- ------------------
+SCOTT                ANALYST
+FORD                 ANALYST
+
+
+
+12．CLERKが複数人いる部門の名称を出力せよ。
+
+SQL> SELECT DISTINCT DNAME
+  2  FROM DEPT NATURAL JOIN EMP
+  3  WHERE DNAME IN (SELECT DNAME
+  4             FROM DEPT NATURAL JOIN EMP
+  5             WHERE JOB = 'CLERK'
+  6             GROUP BY DNAME
+  7             HAVING COUNT(JOB) >=2
+  8                     );
+
+DNAME
+------------------------
+RESEARCH
+
+13．同一給与GRADEの人のうちで最も給与の低い人のGRADE、EMPNO、ENAME、JOB、SALの一覧を、
+　　GRADEの低い順に出力せよ。
+
+SQL> SELECT GRADE,EMPNO,ENAME,JOB,SAL
+  2  FROM EMP NATURAL JOIN (SELECT GRADE,MIN(SAL) SAL
+  3                     FROM EMP ,SALGRADE
+  4                     WHERE SAL BETWEEN LOSAL AND HISAL
+  5                     GROUP BY GRADE
+  6                     ORDER BY GRADE)
+  7  ORDER BY GRADE;
+
+     GRADE      EMPNO ENAME                JOB                       SAL
+---------- ---------- -------------------- ------------------ ----------
+         1       7369 SMITH                CLERK                     800
+         2       7521 WARD                 SALESMAN                 1250
+         2       7654 MARTIN               SALESMAN                 1250
+         3       7844 TURNER               SALESMAN                 1500
+         4       7782 CLARK                MANAGER                  2450
+         5       7839 KING                 PRESIDENT                5000
+
+6行が選択されました。
+
+
+14.現在社員がいない部門の部門名と所在地を出力せよ。
+
+　SQL> SELECT DNAME 部門名,LOC 所在地
+  2  FROM DEPT
+  3  WHERE NOT EXISTS(SELECT DEPTNO
+  4              FROM EMP
+  5              WHERE DEPT.DEPTNO=EMP.DEPTNO
+  6              GROUP BY DEPTNO
+  7              HAVING COUNT(JOB)>=1);
+
+部門名                   所在地
+------------------------ ------------------------
+OPERATIONS               BOSTON
+
+
+
+
+第２部：テーブルCUSTOMER、 GOODS、 SLIP、ACCOUNTを使って以下の質問のＳＱＬ文を作成せよ。
+
+１．１度に軟式ボールLB-320を最も多く注文した顧客の名前と注文日を出力せよ。
+
+SQL> SELECT CUST_NAME 顧客名,SLIP_DATE 注文日,QTY 注文数
+  2  FROM ACCOUNT NATURAL JOIN SLIP
+  3          NATURAL JOIN GOODS
+  4          NATURAL JOIN CUSTOMER
+  5  WHERE GOODS_NAME='軟式ボールLB-320'
+  6        AND QTY IN (SELECT MAX(QTY)
+  7           FROM ACCOUNT
+  8          GROUP BY GOODS_ID);
+
+顧客名         注文日       注文数
+-------------- -------- ----------
+上新スポーツ   18-07-01         12
+山田産業       18-06-21         12
+三光スポーツ   18-06-25         12
+
+２．顧客ごとの受注回数、合計受注額の一覧を、受注回数の多い順に出力せよ。
+
+SQL> SELECT CUST_NAME 顧客名,COUNT(SLIP_ID) 受注回数,SUM(KEI) 受注合計
+  2  FROM (SELECT SLIP_ID,SUM(UNIT_PRICE*QTY) "KEI"
+  3        FROM ACCOUNT NATURAL JOIN GOODS
+  4        GROUP BY SLIP_ID)
+  5        NATURAL JOIN CUSTOMER
+  6        NATURAL JOIN SLIP
+  7     GROUP BY CUST_NAME
+  8     ORDER BY COUNT(SLIP_ID) DESC;
+
+顧客名           受注回数   受注合計
+-------------- ---------- ----------
+山田産業                3     130000
+ビクトリア              2     170000
+三光スポーツ            1     144000
+上新スポーツ            1      18000
+大山スポーツ            1     105000
+
+
+教科書には集合演算子は 'UNION' だけしか出ていませんが、以下の演算子も存在します。
+   INTERSECT：共通集合を求める。
+   MINUS：差集合を求める。
+
+
+３．硬式ボールBB-910と軟式ボールLB-320のみを同時に発注したことがある顧客の名称とその
+　　伝票番号を出力せよ。
+
+３-1）上記質問をINTERSECT、MINUSを使ったSQL文で実現せよ
+
+SQL> SELECT CUST_NAME 顧客名,SLIP_ID 伝票番号
+  2  FROM ACCOUNT NATURAL JOIN SLIP
+  3          NATURAL JOIN GOODS
+  4          NATURAL JOIN CUSTOMER
+  5  WHERE GOODS_NAME='硬式ボールBB-910'
+  6  INTERSECT
+  7  SELECT CUST_NAME 顧客名,SLIP_ID 伝票番号
+  8  FROM ACCOUNT NATURAL JOIN SLIP
+  9          NATURAL JOIN GOODS
+ 10          NATURAL JOIN CUSTOMER
+ 11  WHERE GOODS_NAME='軟式ボールLB-320'
+ 12  MINUS
+ 13  SELECT CUST_NAME 顧客名,SLIP_ID 伝票番号
+ 14  FROM ACCOUNT NATURAL JOIN SLIP
+ 15          NATURAL JOIN GOODS
+ 16          NATURAL JOIN CUSTOMER
+ 17  WHERE GOODS_NAME NOT IN ('軟式ボールLB-320','硬式ボールBB-910');
+
+顧客名           伝票番号
+-------------- ----------
+山田産業                4
+上新スポーツ            7
+３-２）上記質問をINTERSECT、MINUSを使わないSQL文で実現せよ
+SQL> SELECT CUST_NAME 顧客名,SLIP_ID 伝票番号
+  2  FROM CUSTOMER NATURAL JOIN SLIP
+  3  WHERE SLIP_ID IN (SELECT SLIP_ID
+  4                    FROM SLIP NATURAL JOIN ACCOUNT
+  5               NATURAL JOIN GOODS
+  6               WHERE GOODS_NAME='硬式ボールBB-910'
+  7               AND SLIP_ID IN (SELECT SLIP_ID
+  8                               FROM SLIP NATURAL JOIN ACCOUNT
+  9                               NATURAL JOIN GOODS
+ 10                               WHERE GOODS_NAME='軟式ボールLB-320'
+ 11                               AND SLIP_ID  NOT IN (SELECT SLIP_ID
+ 12                                               FROM ACCOUNT NATURAL JOIN SLIP
+
+ 13                                               NATURAL JOIN GOODS
+ 14                                               NATURAL JOIN CUSTOMER
+ 15                                               WHERE GOODS_NAME NOT IN ('軟式
+ボールLB-320','硬式ボールBB-910')
+ 16                                               GROUP BY SLIP_ID)
+ 17                               GROUP BY SLIP_ID)
+ 18               GROUP BY SLIP_ID);
+
+顧客名           伝票番号
+-------------- ----------
+山田産業                4
+上新スポーツ            7
+
+
+
+
+
+第３部：相関副問合せに関する演習
+　　　　~~~~~~~~~~~~~~~~~~~~~~~~
+
+テーブルCUSTOMER、 GOODS、 SLIP、ACCOUNTに対し相関副問合せを使って以下の質問
+に対するＳＱＬを作成せよ。                    ~~~~~~~~~~~~~~~~~~~~
+
+
+１．2018年６月には一度も発注したことがない顧客の名前を出力せよ。
+　　ヒント：NOT EXISTS　を使用。
+
+SQL> SELECT CUST_NAME
+  2  FROM CUSTOMER
+  3  WHERE  NOT EXISTS (SELECT SLIP_DATE
+  4                FROM SLIP
+  5                WHERE SLIP_DATE LIKE '18-06%'
+  6                AND CUSTOMER.CUST_ID = SLIP.CUST_ID);
+
+CUST_NAME
+--------------
+上新スポーツ
+三州スポーツ
+
+
+２．まだ一度も注文を受けたことがない顧客の名前を出力せよ。
+
+
+SQL> SELECT CUST_NAME
+  2  FROM CUSTOMER
+  3  WHERE  NOT EXISTS (SELECT SLIP_DATE
+  4                FROM SLIP
+  5                WHERE CUSTOMER.CUST_ID = SLIP.CUST_ID);
+
+CUST_NAME
+--------------
+三州スポーツ
+
+
+
+３．軟式ボールLB-320を発注したことがない顧客の名前を出力せよ。
+
+SQL> SELECT CUST_NAME
+  2  FROM CUSTOMER
+  3  WHERE  '軟式ボールLB-320' NOT IN (SELECT GOODS_NAME
+  4                               FROM GOODS,SLIP,ACCOUNT
+  5                               WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+  6                               AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+  7                               AND CUSTOMER.CUST_ID=SLIP.CUST_ID);
+
+CUST_NAME
+--------------
+大山スポーツ
+ビクトリア
+三州スポーツ
+
+
+４．軟式ボールLB-320を発注したことがある顧客の名前を出力せよ。
+
+
+SQL> SELECT CUST_NAME
+  2  FROM CUSTOMER
+  3  WHERE  '軟式ボールLB-320' IN (SELECT GOODS_NAME
+  4                               FROM GOODS,SLIP,ACCOUNT
+  5                               WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+  6                               AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+  7                               AND CUSTOMER.CUST_ID=SLIP.CUST_ID);
+
+CUST_NAME
+--------------
+上新スポーツ
+山田産業
+三光スポーツ
+
+
+
+５．'片耳ヘルメットH135'および'両耳ヘルメットH130'を発注したことがある顧客の名前を出力せよ。
+　　ここで両ヘルメットを１回の注文で同時に発注している必要はない。
+
+SQL> SELECT CUST_NAME
+  2  FROM CUSTOMER
+  3  WHERE  '片耳ヘルメットH135' IN (SELECT GOODS_NAME
+  4                               FROM GOODS,SLIP,ACCOUNT
+  5                               WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+  6                               AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+  7                               AND CUSTOMER.CUST_ID=SLIP.CUST_ID)
+  8  OR '両耳ヘルメットH130' IN (SELECT GOODS_NAME
+  9                               FROM GOODS,SLIP,ACCOUNT
+ 10                               WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+ 11                               AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+ 12                               AND CUSTOMER.CUST_ID=SLIP.CUST_ID);
+
+CUST_NAME
+--------------
+山田産業
+三光スポーツ
+
+６．'片耳ヘルメットH135'を発注したことがあるが'両耳ヘルメットH130'を発注したことがない顧客
+　　の名前を出力せよ。
+
+
+SQL> SELECT CUST_NAME
+  2  FROM CUSTOMER
+  3  WHERE  '片耳ヘルメットH135' IN (SELECT GOODS_NAME
+  4                               FROM GOODS,SLIP,ACCOUNT
+  5                               WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+  6                               AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+  7                               AND CUSTOMER.CUST_ID=SLIP.CUST_ID)
+  8  AND '両耳ヘルメットH130' NOT IN (SELECT GOODS_NAME
+  9                               FROM GOODS,SLIP,ACCOUNT
+ 10                               WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+ 11                               AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+ 12                               AND CUSTOMER.CUST_ID=SLIP.CUST_ID);
+
+CUST_NAME
+--------------
+山田産業
+
+
+７．'硬式ボールBB-910'および'アルミバットAT-850'を１回の注文で同時に発注したことがあるSLIP_ID
+　　を出力せよ。
+
+
+SQL> SELECT SLIP_ID
+  2  FROM SLIP
+  3  WHERE '硬式ボールBB-910' IN (SELECT GOODS_NAME
+  4                                  FROM GOODS,ACCOUNT
+  5                                  WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+  6                                  AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID)
+  7  AND 'アルミバットAT-850' IN (SELECT GOODS_NAME
+
+  8                             FROM GOODS,ACCOUNT
+  9                                  WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+ 10                                  AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+ 11                                  );
+
+   SLIP_ID
+----------
+         3
+
+
+８．'硬式ボールBB-910'および'アルミバットAT-850'を１回の注文で同時に発注したことがある顧客の
+　　名前を出力せよ。
+
+SQL> SELECT CUST_NAME
+  2  FROM SLIP NATURAL JOIN CUSTOMER
+  3  WHERE '硬式ボールBB-910' IN (SELECT GOODS_NAME
+  4                                  FROM GOODS,ACCOUNT
+  5                                  WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+  6                                  AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID)
+  7  AND 'アルミバットAT-850' IN (SELECT GOODS_NAME
+
+  8                             FROM GOODS,ACCOUNT
+  9                                  WHERE GOODS.GOODS_ID = ACCOUNT.GOODS_ID
+ 10                                  AND SLIP.SLIP_ID =ACCOUNT.SLIP_ID
+ 11                                  );
+
+CUST_NAME
+--------------
+三光スポーツ
+９．ビクトリアから注文を受けたことがない商品名一覧を出力せよ。
+SQL> SELECT DISTINCT GOODS_NAME
+  2  FROM GOODS
+  3  WHERE NOT EXISTS(SELECT ACCOUNT_ID
+  4              FROM CUSTOMER  NATURAL JOIN SLIP
+  5                             NATURAL JOIN ACCOUNT
+  6              WHERE GOODS.GOODS_ID=ACCOUNT.GOODS_ID
+  7              AND CUST_NAME LIKE 'ビクトリア');
+
+GOODS_NAME
+------------------------
+両耳ヘルメットH130
+軟式ボールLB-320
+木製バットBT-70
+片耳ヘルメットH135
+

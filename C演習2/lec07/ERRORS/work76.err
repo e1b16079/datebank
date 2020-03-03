@@ -1,0 +1,3 @@
+PAT Nd2206 △ work76.cの関数[void setMaxMin(int*,int*)]はパターン[ (|(void *)|void *) & 変数名]を含んではいけません。
+CMP W0C128 × ファイル[work76.c]にはコンパイルエラー[conflicting types for ((swap))]があります。
+EXC 006101 ▲ コンパイルエラーがあるためプログラムを実行できません。

@@ -1,0 +1,25 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+    int a, b, c, d = 0, i;
+
+    printf("一つ目の値の入力：");
+    scanf("%d",&amp;a);
+    printf("二つ目の値の入力：");
+    scanf("%d",&amp;b);
+
+    if(a&gt;b){
+    c=a;
+    a=b;
+    b=c;}
+
+    for(i=a;i&lt;=b;i++){
+       d= d+i*i;
+       }
+
+    printf("%dから%dの平方和は%dです。\n",a, b, d);
+
+    return 0;
+}
+</pre></body></html>

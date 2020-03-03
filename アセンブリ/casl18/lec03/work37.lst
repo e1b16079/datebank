@@ -1,0 +1,14 @@
+     1                          PRG0307	START
+     2  0000: 1210 001E         	LAD	GR1,30
+     3  0002: 1220 0007         	LAD	GR2,7
+     4  0004: 1230 FFF4         	LAD	GR3,-12
+     5  0006: 1240 001B         	LAD	GR4,27
+     6  0008: 2412              	ADDA	GR1,GR2
+     7  0009: 2513              	SUBA	GR1,GR3
+     8  000A: 2414              	ADDA	GR1,GR4
+     9  000B: 2010 000E         	ADDA	GR1,=100
+    10  000D: 8100              	RET
+        000E: 0064              =100	DC	100
+    11                          	END
+
+      0 Errors

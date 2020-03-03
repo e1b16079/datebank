@@ -1,0 +1,25 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+    int a, b, c;
+
+    printf("1番目の角度を入力して下さい：");
+    scanf("%d",&amp;a);
+    printf("2番目の角度を入力して下さい：");
+    scanf("%d",&amp;b);
+
+    c=180-(a+b);
+    printf("残りの角度は%d度です。\n",c);
+
+    if(a==60&amp;&amp;b==60&amp;&amp;c==60){
+      printf("その三角形は正三角形です\n");
+    }
+    if((a==b||b==c||c==a)&amp;&amp;(a!=60&amp;&amp;b!=60&amp;&amp;c!=60)){
+      printf("その三角形は二等辺三角形です\n");
+    }
+    if(a==90||b==90||c==90){
+      printf("その三角形は直角三角形です\n");
+    }
+return 0;
+}
+</pre></body></html>

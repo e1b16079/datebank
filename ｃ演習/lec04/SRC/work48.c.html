@@ -1,0 +1,29 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+    int w;
+    double b, t;
+
+    printf("身長（単位：cm）の入力：\n");
+    scanf("%lf",&amp;t);
+    printf("体重（単位：kg）の入力：\n");
+    scanf("%d",&amp;w);
+    t=t/100;
+    b=w/(t*t);
+    printf("あなたのBMI指数は%.1fです。\n", b);
+
+    if(18.5&gt;b){
+      printf("肥満度は、やせです。\n");}
+    else
+      if(18.5&lt;=b&amp;&amp;b&lt;25.0){
+        printf("肥満度は、標準です。\n");}
+      else
+        if(25.0&lt;=b&amp;&amp;b&lt;30){
+          printf("肥満度は、肥満です。\n");}
+        else
+          printf("肥満度は、過度肥満です。\n");
+    return 0;
+}
+
+
+</pre></body></html>

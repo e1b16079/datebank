@@ -1,0 +1,24 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+#define KETA 12
+int main(void){
+    int i, tmp;
+    int a[KETA];
+
+    printf("Input: ");
+    scanf("%d", &amp;tmp);
+
+    for(i=KETA-1;i&gt;=0;i--){
+     a[i]=tmp%10;
+     tmp=tmp/10;
+    }
+
+    printf("a=");
+    for(i=0;i&lt;KETA;i++){
+    printf("%d",a[i]);
+    }
+    printf("\n");
+ 
+    return 0;
+}
+</pre></body></html>

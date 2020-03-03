@@ -1,0 +1,62 @@
+#include "shapes.inc"
+#include "colors.inc"
+
+camera {
+  //orthographic
+  //location < 3, 4, 20 >
+  location < 0  ,  35,  0 >
+  right    <-1.33,  0,  0 >
+  look_at  < 0   ,  0.6,  0>
+  angle 20
+}
+   
+light_source {
+  < -20, 15, 10> 
+  color 3*White
+}    
+
+object{
+  plane{ <0, 1, 0>, 0  }
+  pigment { checker color White color Black } 
+}
+    
+background{ LightBlue }
+
+/* P */    
+object{  
+  box{ <-4,   0, -1.5>,<-3.5, 0.5,  1.5> }
+  pigment{ color Green }
+}          
+object{  
+  box{ <-2.5, 0, -1.5>,<-2,   0.5, 0> }
+  pigment{ color Green }
+}                   
+     
+object{  
+  box{ <-3.5, 0, -1.5>,<-2,   0.5, -1> }
+  pigment{ color Green }
+}                
+
+object{  
+  box{ <-3.5, 0, 0>,<-2,   0.5,-0.5> }
+  pigment{ color Green }
+}    
+  
+  
+/* O */
+object{
+  torus{ 0.8, 0.20 }
+  pigment{ color Yellow }
+  scale<0,0,1.5>
+}
+
+/* T */
+            
+object{  
+  box{ <2, 1, -1.5>,<4,0,-1> }
+  pigment{ color Red}
+}                  
+ object{  
+  box{ <2.75,   1, -1.5>,<3.25, 0.5,  1.5> }
+  pigment{ color Red }
+}          

@@ -1,0 +1,23 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+    int a, b, c = 0, d, e;
+
+    printf("aの値の入力：");
+    scanf("%d", &amp;a);
+    printf("bの値の入力：");
+    scanf("%d", &amp;b);
+    e = a;
+    d=a;
+    while(a%b==0){
+    a= a / b;
+    c++;
+    d=a;
+    }
+    
+    printf("%d = %d^%d*%d\n", e, b, c, d);
+
+
+    return 0;
+}
+</pre></body></html>

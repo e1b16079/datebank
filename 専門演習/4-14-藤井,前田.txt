@@ -1,0 +1,447 @@
+　　　　　　　　　　情報システム専門演習 報告書
+　　　　　　　　　　　　　（2018年度　後期）
+
+
+
+
+課題番号      課題-(4) 
+
+担当教員名　　　　　　　　　　　　　　　　
+
+クラス名（Ａ or Ｂ）　＿＿＿B＿＿＿
+
+グループ番号         14              
+
+報告者名
+
+学生番号：B16072                氏    名：藤井　湧也
+学生番号：B16079                氏    名：前田　剛志
+
+
+***************************************************************
+
+情報システム専門演習　　　　　課題（４）
+                                                     2018.10.22
+
+ [注意事項]  
+教科書例題の実行が終わったら、以下の課題に取り掛かる前に必ずSQLを一度終了させ
+再立ち上げして下さい。
+
+
+
+
+
+第１部 DELETE、UPDATE文
+
+以下の各課題実行後必ず、
+ SELECT * FROM EMP;
+等を実行して、正しく変更されているか確認してください。
+また、確認されたらROLLBACK文を実行して取り消しを行ってください。
+
+1.GOODS表の中で単価が最も高い商品の値段を5％アップせよ。
+
+UPDATE GOODS SET UNIT_PRICE=UNIT_PRICE*1.05
+WHERE UNIT_PRICE=(SELECT MAX(UNIT_PRICE)
+		  FROM GOODS);
+
+  GOODS_ID GOODS_NAME               UNIT_PRICE
+---------- ------------------------ ----------
+         1 硬式ボールBB-910               1000
+         2 軟式ボールLB-320                500
+         3 木製バットBT-70               15000
+         4 アルミバットAT-850            26250
+         5 両耳ヘルメットH130             5000
+         6 片耳ヘルメットH135             4000
+
+6行が選択されました。
+
+
+2.EMP表で給与が全社員の平均給与より高い社員のみ給与を5%アップさせよ。
+
+
+SQL> UPDATE     EMP
+  2  SET        SAL = ROUND(SAL * 1.05,0)
+  3  WHERE      SAL > (SELECT AVG(SAL)
+  4                     FROM    EMP);
+
+6行が更新されました。
+
+SQL>  SELECT ENAME,SAL
+  2   FROM EMP
+  3   ;
+
+ENAME                       SAL
+-------------------- ----------
+SMITH                       800
+ALLEN                      1600
+WARD                       1250
+JONES                      3124
+MARTIN                     1250
+BLAKE                      2993
+CLARK                      2573
+SCOTT                      3150
+KING                       5250
+TURNER                     1500
+ADAMS                      1100
+JAMES                       950
+FORD                       3150
+MILLER                     1300
+
+14行が選択されました。
+
+
+
+3.EMP表で管理職（誰かの上司になっている人）の給与を5%減額せよ。
+
+
+UPDATE EMP SET SAL=SAL*0.95
+WHERE ENAME IN (SELECT DISTINCT A.ENAME
+	     FROM EMP A,EMP B
+	     WHERE A.EMPNO=B.MGR);
+
+ENAME                       SAL
+-------------------- ----------
+SMITH                       800
+ALLEN                      1600
+WARD                       1250
+JONES                   2826.25
+MARTIN                     1250
+BLAKE                    2707.5
+CLARK                    2327.5
+SCOTT                      2850
+KING                       4750
+TURNER                     1500
+ADAMS                      1100
+JAMES                       950
+FORD                       2850
+MILLER                     1300
+
+14行が選択されました。
+
+
+4.SLIP表の2018年6月に三光スポーツから発注を受けた日を１日遅らせよ。
+
+
+SQL> UPDATE     SLIP
+  2  SET        SLIP_DATE = SLIP_DATE + 1
+  3  WHERE      CUST_ID IN(SELECT CUST_ID
+  4                FROM CUSTOMER
+  5                     NATURAL JOIN    SLIP
+  6                WHERE CUST_NAME LIKE '三光スポーツ'
+  7                AND  SLIP_DATE LIKE  '18-06%');
+
+1行が更新されました。
+
+SQL> SELECT *
+  2  FROM SLIP;
+
+   SLIP_ID    CUST_ID SLIP_DAT
+---------- ---------- --------
+         1          2 18-06-21
+         2          5 18-06-25
+         3          4 18-06-26
+         4          2 18-06-26
+         5          3 18-06-28
+         6          2 18-07-01
+         7          1 18-07-01
+         8          5 18-07-02
+
+8行が選択されました。
+
+
+
+5.ADAMSが退職した。そこで、EMP表からADAMSに関するデータを削除せよ。
+
+DELETE FROM EMP
+WHERE ENAME='ADAMS';
+
+ENAME
+--------------------
+SMITH
+ALLEN
+WARD
+JONES
+MARTIN
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+JAMES
+FORD
+MILLER
+
+13行が選択されました。
+
+
+
+
+6.CHICAGOのマネージャーBLAKE（EMPNO=7698）とNEW YORKのマネージャーCLARK(EMPNO=7782）が人事
+　異動により交替した。これに伴い、BLAKEの部下はCLARKの部下に、CLARKの部下はBLAKEの部下に
+　それぞれ変更となった。以上の結果を複数のUPDATE文を使用してテーブルEMPに反映させよ。
+　なお、BLAKEとCLARKは、EMPNOの7698 と7782で指定してかまわない。
+
+
+SQL> UPDATE     EMP
+  2  SET        MGR = 7698
+  3  WHERE      MGR = 7782;
+
+1行が更新されました。
+
+SQL> UPDATE     EMP
+  2  SET        MGR = 7782
+  3  WHERE      MGR = 7698
+  4     AND DEPTNO = 30;
+
+5行が更新されました。
+
+SQL> UPDATE     EMP
+  2  SET        DEPTNO = 10
+  3  WHERE      ENAME LIKE 'BLAKE';
+
+1行が更新されました。
+
+SQL> UPDATE     EMP
+  2  SET        DEPTNO = 30
+  3  WHERE      ENAME LIKE 'CLARK';
+
+1行が更新されました。
+
+SQL> SELECT *
+  2  FROM EMP;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+      7369 SMITH                CLERK                    7902 80-12-17        800                    20
+      7499 ALLEN                SALESMAN                 7782 81-02-20       1600        300         30
+      7521 WARD                 SALESMAN                 7782 81-02-22       1250        500         30
+      7566 JONES                MANAGER                  7839 81-04-02       2975                    20
+      7654 MARTIN               SALESMAN                 7782 81-09-28       1250       1400         30
+      7698 BLAKE                MANAGER                  7839 81-05-01       2850                    10
+      7782 CLARK                MANAGER                  7839 81-06-09       2450                    30
+      7788 SCOTT                ANALYST                  7566 87-04-19       3000                    20
+      7839 KING                 PRESIDENT                     81-11-17       5000                    10
+      7844 TURNER               SALESMAN                 7782 81-09-08       1500          0         30
+      7876 ADAMS                CLERK                    7788 87-05-23       1100                    20
+      7900 JAMES                CLERK                    7782 81-12-03        950                    30
+      7902 FORD                 ANALYST                  7566 81-12-03       3000                    20
+      7934 MILLER               CLERK                    7698 82-01-23       1300                    10
+
+
+
+　[副問合せを使用した更新]
+
+　副問合せを使用した更新 - 構文
+　UPDATE 表名
+　SET 列名 = (SELECT 列名
+　            FROM 表名
+　            WHERE 条件)
+　[ ,
+　    列名 = (SELECT 列名
+　            FROM 表名
+  　          WHERE 条件)]
+　[WHERE 条件] ;
+
+
+ [例]従業員114の職種および部門を、従業員205と同じになるように更新する。
+　SQL> UPDATE employees
+　   2 SET job_id = (SELECT job_id
+　   3 　　　　　　　FROM employees
+　   4 　　　　　　　WHERE employee_id = 205),
+　   5 　　salary = (SELECT salary
+　   6 　　　　　　　FROM employees
+　   7 　　　　　　　WHERE employee_id = 205)
+　   8 　　WHERE employee_id = 114;
+　1行が更新されました。
+
+
+７．EMPNO 7369のSMITHは、従来EMPNO 7902であるFORDの部下であったが、今度の人事異動でFORD
+   の上司直属となった。この結果をデータベースに反映させよ。
+   副問合せを使用したUPDATE文で解答すること。
+　　　　　 
+UPDATE EMP SET MGR=(SELECT MGR
+		    FROM EMP
+		    WHERE ENAME='FORD')
+WHERE ENAME='SMITH';
+
+
+ENAME                       MGR
+-------------------- ----------
+SMITH                      7566
+ALLEN                      7698
+WARD                       7698
+JONES                      7839
+MARTIN                     7698
+BLAKE                      7839
+CLARK                      7839
+SCOTT                      7566
+KING
+TURNER                     7698
+ADAMS                      7788
+JAMES                      7698
+FORD                       7566
+MILLER                     7782
+
+14行が選択されました。
+
+
+
+
+
+
+
+
+第２部
+
+この会社では2018年10月１日付けで大規模な組織改革を実施した。その内容は以下の通りである。
+改革後の状態をデータベースに反映させるため、テーブルDEPT、EMPに必要な修正を施せ。
+なお、本課題実施にあたっては、以下の説明をよく読んで全貌を正しく理解した後、更新手順を整理
+した上でデータベースの更新を行う事。気のついたものから更新を行うとうまくいかないことがあり
+ます。
+
+[組織改革の内容]
+まず、PRESIDENT職を廃止し、最高経営責任者（CEO）と最高執行責任者（COO）を設けると共に、DEPARTMENT
+として本社部門（HEAD_OFFICE）を新設した。HEAD_OFFICEの部門番号（DEPTNO）は95でロケーション
+（LOC）はNEW YORKである。
+初代CEOにはKINGを、COOにはRESEARCH部門のマネージャーであったJONESをそれぞれ任命した。こ
+の際、KINGの給与は据え置きとしたが、JONESの給与は4000にアップした。HEAD_OFFICEに所属する
+のは、CEO、COO及び新たに雇い入れたMAY（JOB＝CLERK、EMPNO＝7987、SAL＝1000）の３人である。
+なお、MAYの上司はCOOのJONESである。
+
+                - ACCOUNTING部門MANAGER
+CEO --- COO ----- RESEARCH部門MANAGER
+                - SALES部門MANAGER
+                - OPERATIONS部門MANAGER
+
+また、JONESの後任は、ACCOUNTING部門のMANAGERであったCLARKを任命し給与15%アップとした。
+CLARKの後任は新たにWILSON（EMPNO=8000、SAL=2600）を雇い入れた。
+
+さらに、従来社員がいなかったOPERATIONS部門に新たに人を雇い入れるとともにALLEN(EMPNO=7499)
+をOPERATIONS部門に異動し、下記構成とした。この異動に伴い、ALLENの給与は１０％アップとした。
+
+MANAGER ：MILNNER（EMPNO＝9000、SAL=2400）
+OPERATOR:GRAY（EMPNO＝9010、SAL=1350）
+         PETER（EMPNO＝9011、SAL=1300）
+         ALLEN
+
+SALES部門ではALLENの後任にHAJEK（EMPNO＝9012、SAL=1200）を雇い入れた。
+
+RESEARCH部門では、チーフアナリスト（C_ANALYST）職を新設し、SCOTTをこれに任命した。これに伴
+い、SCOTTの給与を2割アップとした。
+さらに、新たにPOWELL（EMPNO＝7905、SAL=2800）をアナリストとして雇い入れると同時に
+SMITH(EMPNO=7369）を解雇した。
+
+
+
+
+回答は、必要なSQL文をすべて書き並べた後、最終的なEMP表、DEPT表を最後に添付したかたちで作
+成すること。
+更新に際しては、まず最初にDEPT表を更新すること。
+また、途中でミスをした場合、必ず ROLLBACKを実行しもとにもどすこと。
+
+[SQL]
+
+INSERT INTO DEPT (DEPTNO,DNAME,LOC)
+	    VALUES(95,'HEAD_OFFICE','NEW YORK');
+
+UPDATE EMP SET JOB='CEO',DEPTNO=95
+           WHERE EMPNO= 7839;
+
+UPDATE EMP SET JOB='COO',DEPTNO=95,SAL=4000
+           WHERE EMPNO= 7566;
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(7987,'MAY','CLERK',7566,'18-10-01',1000,NULL,95);
+
+UPDATE EMP SET DEPTNO=20,SAL=SAL*1.15
+           WHERE EMPNO= 7782;
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(8000,'WILSON','MANAGER',7566,'18-10-01',2600,NULL,10);
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(9000,'MILNNER','MANAGER',7566,'18-10-01',2400,NULL,40);
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(9010,'GRAY','OPERATOR',9000,'18-10-01',1350,NULL,40);
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(9011,'PETER','OPERATOR',9000,'18-10-01',1300,NULL,40);
+
+UPDATE EMP SET DEPTNO=40,SAL=SAL*1.1,JOB='OPERATOR',MGR=9000,COMM=NULL
+           WHERE EMPNO= 7499;
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(9012,'HAJEK','SALESMAN',7698,'18-10-01',1200,0,30);
+
+UPDATE EMP SET SAL=SAL*1.2,JOB='C_ANALYST',MGR=7782
+           WHERE EMPNO= 7788;
+
+INSERT INTO EMP (EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO)
+	    VALUES(9005,'POWELL','ANALYST',7788,'18-10-01',2800,NULL,20);
+
+DELETE FROM EMP WHERE EMPNO=7369;
+
+UPDATE EMP SET MGR=7566
+           WHERE JOB='MANAGER';
+
+UPDATE EMP SET MGR=7698
+           WHERE DEPTNO=30
+	   AND EMPNO!=7698;
+
+UPDATE EMP SET MGR=7782
+           WHERE DEPTNO=20
+	   AND EMPNO!=7782;
+
+UPDATE EMP SET MGR=7788
+           WHERE JOB='ANALYST';
+
+UPDATE EMP SET MGR=8000
+           WHERE DEPTNO=10
+	   AND EMPNO!=8000;
+
+UPDATE EMP SET MGR=9000
+           WHERE DEPTNO=40
+	   AND EMPNO!=9000;
+
+[EMP]
+SQL> SELECT *
+  2  FROM EMP
+  3  ORDER BY EMPNO
+  4  ;
+
+     EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
+---------- -------------------- ------------------ ---------- -------- ---------- ---------- ----------
+      7499 ALLEN                OPERATOR                 9000 81-02-20       1760                    40
+      7521 WARD                 SALESMAN                 7698 81-02-22       1250        500         30
+      7566 JONES                COO                      7839 81-04-02       4000                    95
+      7654 MARTIN               SALESMAN                 7698 81-09-28       1250       1400         30
+      7698 BLAKE                MANAGER                  7566 81-05-01       2850                    30
+      7782 CLARK                MANAGER                  7566 81-06-09     2817.5                    20
+      7788 SCOTT                C_ANALYST                7782 87-04-19       3600                    20
+      7839 KING                 CEO                           81-11-17       5000                    95
+      7844 TURNER               SALESMAN                 7698 81-09-08       1500          0         30
+      7876 ADAMS                CLERK                    7782 87-05-23       1100                    20
+      7900 JAMES                CLERK                    7698 81-12-03        950                    30
+      7902 FORD                 ANALYST                  7788 81-12-03       3000                    20
+      7934 MILLER               CLERK                    8000 82-01-23       1300                    10
+      7987 MAY                  CLERK                    7566 18-10-01       1000                    95
+      8000 WILSON               MANAGER                  7566 18-10-01       2600                    10
+      9000 MILNNER              MANAGER                  7566 18-10-01       2400                    40
+      9005 POWELL               ANALYST                  7788 18-10-01       2800                    20
+      9010 GRAY                 OPERATOR                 9000 18-10-01       1350                    40
+      9011 PETER                OPERATOR                 9000 18-10-01       1300                    40
+      9012 HAJEK                SALESMAN                 7698 18-10-01       1200          0         30
+
+
+[DEPT]
+SQL> SELECT *
+  2  FROM DEPT;
+
+    DEPTNO DNAME                    LOC
+---------- ------------------------ ------------------------
+        10 ACCOUNTING               NEW YORK
+        20 RESEARCH                 DALLAS
+        30 SALES                    CHICAGO
+        40 OPERATIONS               BOSTON
+        95 HEAD_OFFICE              NEW YORK

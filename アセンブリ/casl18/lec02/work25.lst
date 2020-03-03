@@ -1,0 +1,11 @@
+     1                          PRG0205	START
+     2  0000: 1220 89AB         	LAD	GR2,#89AB
+     3  0002: 1120 000B         	ST	GR2,DATA
+     4  0004: 1010 000B         	LD	GR1,DATA
+     5  0006: 1030 000B         	LD	GR3,DATA
+     6  0008: 1050 000B         	LD	GR5,DATA
+     7  000A: 8100              	RET
+     8  000B: 0031              DATA	DC	'1'
+     9                          	END
+
+      0 Errors

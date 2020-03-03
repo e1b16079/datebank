@@ -1,0 +1,45 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+#define MAXSIZE 10
+int main(void){
+    int a[MAXSIZE]={10,20,30,40,50};
+    int index, data;
+    int i, k, j;
+
+    printf("a：");
+    for(i=0;i&lt;MAXSIZE;i++){
+       printf("[%d]=%d ", i, a[i]);
+    }
+    printf("\n\n");
+
+    printf("index： "); scanf("%d", &amp;index);
+    printf("data： "); scanf("%d", &amp;data);
+    printf("a[%d]に%dを挿入します\n", index, data);
+    for(k=MAXSIZE-1;k&gt;index;k--){
+      a[k]=a[k-1];
+   }
+
+    a[index]=data;
+
+    printf("a：");
+    for(i=0;i&lt;MAXSIZE;i++){
+       printf("[%d]=%d ", i, a[i]);
+    }
+    printf("\n\n");
+
+    printf("index： "); scanf("%d", &amp;index);
+    printf("a[%d]を削除します\n", index);
+
+    for(j=index;j&lt;MAXSIZE-1;j++){
+      a[j]=a[j+1];
+   }
+   a[MAXSIZE-1]=0;
+    printf("a：");
+    for(i=0;i&lt;MAXSIZE;i++){
+       printf("[%d]=%d ", i, a[i]);
+    }
+    printf("\n");
+    return 0;
+}
+
+</pre></body></html>

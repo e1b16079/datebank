@@ -1,0 +1,131 @@
+#include "shapes.inc"
+#include "colors.inc"
+#include "shapes.inc"
+#include "textures.inc"
+#include "Woods.inc"
+#include "stones.inc"
+#include "glass.inc"
+#include "metals.inc"
+
+
+camera {
+  //orthographic
+  //location < 3, 4, 20 >
+  location < 10  ,  20,  25 >
+  right    <-1.33,  0,  0 >
+  look_at  < 0   ,  0.6,  0>
+  angle 45
+}
+   
+light_source {
+  < 10, 10, 5> 
+  color 2*White 
+  area_light
+  <0,0,-5>,<5,0,0>,5,5
+  adaptive 1 jitter
+}    
+/*
+union { 
+  difference{
+  cone{
+    <0,0,0>,2
+    <0,4,0>,3
+  }
+  cone{
+    <0,0,0>,1.7
+    <0,4.2,0>2.7
+  }
+  pigment {
+     color rgb <0.4,0.8,0.4>
+  }
+  normal{
+   waves 2 scale 0.8
+   }
+  }
+  cone{
+  <0,0.2,0>,1.7
+  <0,3.5,0>,2.6
+  pigment{color Green}
+  }
+  }
+    */ 
+ 
+ /*union{  */
+ difference{       
+   union{
+      cylinder{
+          <0,0,0>,<0,5,0>,3
+       }
+       torus{ 1.6,0.25  
+        translate <2,1.5,-2.5>
+        rotate <90, 20, 0>  
+ 
+       }
+        
+       cylinder{
+          <0,0,0>,<0,5.2,0>,2.5     
+          }
+       pigment { color Red}
+       } 
+       }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  plane{<0,1,0>,0
+  pigment{checker color Gray90 color Gray70}
+  }
+  
+  background {LightBlue}       
+       
+       
+       
+       
+/*jiku*/   
+union{
+  cylinder{              
+    <0,0,0>,<5,0,0>,0.1
+  }
+  cone{                
+    <5,0,0>,0.2<5.5,0,0>,0
+  }
+  pigment{ color Red }
+}
+
+union{
+  cylinder{              
+    <0,0,0>,<5,0,0>,0.1
+  }
+  cone{                
+    <5,0,0>,0.2<5.5,0,0>,0
+  }
+  pigment{ color Green }
+  rotate z*90
+}  
+
+union{
+  cylinder{              
+    <0,0,0>,<5,0,0>,0.1
+  }
+  cone{                
+    <5,0,0>,0.2<5.5,0,0>,0
+  }
+  pigment{ color Blue }
+  rotate y*-90
+}      

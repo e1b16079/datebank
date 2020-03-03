@@ -1,0 +1,949 @@
+　　　　　　　　　　情報システム専門演習 報告書
+　　　　　　　　　　　　　（2018年度　後期）
+
+
+
+
+課題番号      課題-(2) 
+
+担当教員名　　水谷先生　　　　　　　　　　　　　　
+
+クラス名（Ａ or Ｂ）　＿＿＿B＿＿＿
+
+
+報告者名
+
+学生番号：e1b16079          氏    名：前田　剛志
+
+
+***************************************************************
+
+
+情報システム専門演習      課題（２）
+                                                      2018.10.8
+
+
+第０部
+
+１）以下のSQL(1)からSQL(4)のうち、2つは同じ結果を出力し、残りの２つも同じ結果を出力する。
+  これらを、同じ結果を出力する２つのグループ(Group1, Group2)に分けよ。なお、SQL(1)を含む
+  グループをGroup1とすること。
+  但し、出力される行や列の順序の違いは無視(異なるとは考えない)してよい。
+
+　　SQL（１）
+　　SELECT  *
+　　FROM    CUSTOMER,  SLIP
+　　WHERE   CUSTOMER.CUST_ID = SLIP. CUST_ID;
+
+　　SQL（２）
+　　SELECT *
+　　FROM   CUSTOMER NATURAL JOIN SLIP;
+
+　　SQL（３）
+　　SELECT *
+　　FROM  CUSTOMER JOIN SLIP 
+　　　ON (CUSTOMER.CUST_ID = SLIP. CUST_ID);
+
+　　SQL（４）
+　　SELECT *
+　　FROM   CUSTOMER JOIN SLIP USING (CUST_ID);
+
+
+　　【回答欄】
+　　　Group1：(1)(3)
+　　　Group2：(2)(4)
+
+
+　　次に、これら２つのグループで出力結果がどう違うかを説明せよ。
+　　【回答欄】
+  ぎゅうぎゅうになっているか間隔があいている
+
+
+
+
+
+２）以下のSQL文はGOODSとACCOUNTに対しどのような関係代数演算を実行するかを答えよ。
+
+　　SELECT  *
+　　FROM   GOODS, ACCOUNT;
+
+　　【回答欄】
+　　　２つの表のすべての行と行の組み合わせが出力される
+
+
+
+
+３）以下のSQL-1は正常に実行されるが、SQL-2を実行すると「ORA-00918: 列の定義が未確定です。」
+　　というエラーメッセージが出力される。これはなぜか？　その理由を答えよ。また、SQL-2にどの
+　　ような修正(但し、結合の仕方は変更しないこと)を行えば正しく実行されるか答えよ。
+
+　　【SQL-1】
+　　SELECT  SLIP_DATE, CUST_NAME
+　　FROM    CUSTOMER NATURAL JOIN  SLIP
+　　WHERE   CUST_ID = 5 ;
+
+　　【SQL-2】
+　　SELECT  SLIP_DATE, CUST_NAME
+　　FROM    CUSTOMER,  SLIP
+　　WHERE   CUSTOMER.CUST_ID = SLIP.CUST_ID
+　　  AND   CUST_ID = 5 ;
+
+
+　【回答欄】
+　　CUST_IDだけだとCUSTOMERとSLIPの両方にCUST_IDがあるためどちらのことを言っているのかわからない
+　　そのためエラーが出る。
+　　４行目を　AND   CUSTOMER.CUST_ID = 5 ;
+    または   AND   SLIP.CUST_ID = 5 ;
+    と変更する。
+
+
+
+
+第１部：テーブルCUSTOMER、 GOODS、 SLIP、ACCOUNTを使って以下の質問のＳＱＬ文を作成せよ。
+
+１．テーブルCUSTOMERとテーブルSLIPをCUST_IDの値が等しいものどうし結合したテーブルを作成
+　　せよ。
+　　なお、出力はSLIP_ID、SLIP_DATE、CUST_ID、CUST_NAME、ADDRESの順に列を並べ、SLIP_IDの値の
+　　小さいものから順に出力すること。（結合の方法が異なる４通りのSQLを作成すること）
+
+[1]
+SELECT SLIP_ID,SLIP_DATE,CUST_ID,CUST_NAME,ADDRESS
+FROM CUSTOMER NATURAL JOIN SLIP
+ORDER BY SLIP_ID
+
+[2]
+SELECT SLIP_ID,SLIP_DATE,CUST_ID,CUST_NAME,ADDRESS
+FROM CUSTOMER JOIN SLIP USING (CUST_ID)
+ORDER BY SLIP_ID;
+
+[3]
+SELECT SLIP_ID,SLIP_DATE,CUSTOMER. CUST_ID,CUST_NAME,ADDRESS
+FROM CUSTOMER, SLIP
+WHERE CUSTOMER. CUST_ID=SLIP. CUST_ID
+ORDER BY SLIP_ID;
+
+[4]
+SELECT SLIP_ID,SLIP_DATE,CUSTOMER. CUST_ID,CUST_NAME,ADDRESS
+FROM CUSTOMER JOIN SLIP ON (CUSTOMER. CUST_ID=SLIP. CUST_ID)
+ORDER BY SLIP_ID;
+
+   SLIP_ID SLIP_DAT    CUST_ID CUST_NAME      ADDRESS
+---------- -------- ---------- -------------- ------------------------
+         1 18-06-21          2 山田産業       大阪市福島区玉川三丁目
+         2 18-06-25          5 ビクトリア     大阪市北区天神橋二丁目
+         3 18-06-25          4 三光スポーツ   大阪市北区堂島二丁目
+         4 18-06-26          2 山田産業       大阪市福島区玉川三丁目
+         5 18-06-28          3 大山スポーツ   大阪市北区梅田三丁目
+         6 18-07-01          2 山田産業       大阪市福島区玉川三丁目
+         7 18-07-01          1 上新スポーツ   大阪市中央区北浜一丁目
+         8 18-07-02          5 ビクトリア     大阪市北区天神橋二丁目
+
+8行が選択されました。
+
+　　次に、上記で作成したテーブルから、2018年7月に注文を出している顧客の名前を発注日付と共
+　　に出力せよ。（結合の方法が異なる４通りのSQLを作成すること）
+
+[1]
+SELECT CUST_NAME,SLIP_DATE
+FROM CUSTOMER NATURAL JOIN SLIP
+WHERE SLIP_DATE LIKE '18-07-%'
+ORDER BY SLIP_DATE;
+
+[2]
+SELECT CUST_NAME,SLIP_DATE
+FROM CUSTOMER JOIN SLIP USING (CUST_ID)
+WHERE SLIP_DATE LIKE '18-07-%'
+ORDER BY SLIP_DATE;
+
+[3]
+SELECT CUST_NAME,SLIP_DATE
+FROM CUSTOMER, SLIP
+WHERE CUSTOMER. CUST_ID=SLIP. CUST_ID
+AND SLIP_DATE LIKE '18-07-%'
+ORDER BY SLIP_DATE;
+
+[4]
+SELECT CUST_NAME,SLIP_DATE
+FROM CUSTOMER JOIN SLIP ON (CUSTOMER. CUST_ID=SLIP. CUST_ID)
+WHERE SLIP_DATE LIKE '18-07-%'
+ORDER BY SLIP_DATE;
+
+CUST_NAME      SLIP_DAT
+-------------- --------
+山田産業       18-07-01
+上新スポーツ   18-07-01
+ビクトリア     18-07-02
+
+
+
+２．テーブルSLIPにおいて列CUST_IDの代わりに対応する顧客名（テーブルCUSTOMERのCUST_NAME）
+　　を代入したテーブルを作成せよ。（結合の方法が異なる４通りのSQLを作成すること）
+
+[1]SELECT SLIP_ID,CUST_NAME,SLIP_DATE
+FROM CUSTOMER NATURAL JOIN SLIP
+ORDER BY SLIP_ID;
+
+
+[2]SELECT SLIP_ID,CUST_NAME,SLIP_DATE
+FROM CUSTOMER JOIN SLIP USING (CUST_ID)
+ORDER BY SLIP_ID;
+
+
+[3]SELECT SLIP_ID,CUST_NAME,SLIP_DATE
+FROM CUSTOMER, SLIP
+WHERE CUSTOMER. CUST_ID=SLIP. CUST_ID
+ORDER BY SLIP_ID;
+
+
+[4]SELECT SLIP_ID,CUST_NAME,SLIP_DATE
+FROM CUSTOMER JOIN SLIP ON (CUSTOMER. CUST_ID=SLIP. CUST_ID)
+ORDER BY SLIP_ID;
+
+   SLIP_ID CUST_NAME      SLIP_DAT
+---------- -------------- --------
+         1 山田産業       18-06-21
+         2 ビクトリア     18-06-25
+         3 三光スポーツ   18-06-25
+         4 山田産業       18-06-26
+         5 大山スポーツ   18-06-28
+         6 山田産業       18-07-01
+         7 上新スポーツ   18-07-01
+         8 ビクトリア     18-07-02
+
+8行が選択されました。
+
+３．単価（UNIT_PRICE)が5,000円未満の商品（GOODS_NAME)を発注している伝票の番号（SLIP_ID）は？
+    但し、以下の２つのSQL文を実行させ、結果を比較すること。
+    SELECT SLIP_ID ・・・ ；         出力結果に重複がある場合がある。
+    SELECT DISTINCT SLIP_ID ・・・； 出力結果の重複は除去される。
+[1]
+SQL> SELECT SLIP_ID
+  2  FROM ACCOUNT NATURAL JOIN GOODS
+  3  WHERE UNIT_PRICE<5000;
+
+   SLIP_ID
+----------
+         4
+         3
+         2
+         7
+         4
+         3
+         6
+         1
+         7
+         6
+         1
+         3
+
+12行が選択されました。
+
+[2]
+SQL> SELECT DISTINCT SLIP_ID
+  2  FROM ACCOUNT NATURAL JOIN GOODS
+  3  WHERE UNIT_PRICE<5000;
+
+   SLIP_ID
+----------
+         1
+         6
+         2
+         4
+         3
+         7
+
+6行が選択されました。
+
+４．2018年7月2日に注文を受けた商品名は？（結合の方法が異なる４通りのSQLを作成すること）
+
+[1]SELECT GOODS_NAME 商品名
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+WHERE SLIP_DATE LIKE '18-07-02';
+
+
+[2]SELECT GOODS_NAME 商品名
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+             JOIN GOODS USING (GOODS_ID)
+WHERE SLIP_DATE LIKE '18-07-02';
+
+
+[3]SELECT GOODS_NAME 商品名
+FROM GOODS, SLIP,ACCOUNT
+WHERE ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND SLIP_DATE LIKE '18-07-02';
+
+
+[4]SELECT GOODS_NAME 商品名
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+WHERE SLIP_DATE LIKE '18-07-02';
+
+商品名
+-----------------------
+アルミバットAT-850
+
+
+
+５．伝票番号６で注文を受けた商品名と数量、商品毎の受注金額を求めよ。
+　　（結合の方法が異なる４通りのSQLを作成すること）
+[1]
+SELECT GOODS_NAME 商品名, QTY 数量,UNIT_PRICE*QTY 金額
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+WHERE SLIP_ID=6;
+
+
+[2]
+SELECT GOODS_NAME 商品名, QTY 数量,UNIT_PRICE*QTY 金額
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+             JOIN GOODS USING (GOODS_ID)
+WHERE SLIP_ID=6;
+
+
+[3]
+SELECT GOODS_NAME 商品名, QTY 数量,UNIT_PRICE*QTY 金額
+FROM GOODS, SLIP,ACCOUNT
+WHERE ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND SLIP.SLIP_ID=6;
+
+
+[4]
+SELECT GOODS_NAME 商品名, QTY 数量,UNIT_PRICE*QTY 金額
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+WHERE SLIP.SLIP_ID=6;
+
+
+商品名                         数量       金額
+----------------------- ---------- ----------
+片耳ヘルメットH135                3       4000
+軟式ボールLB-320                 10        500
+
+６．軟式ボールLB-320を受注した日付は？（結合の方法が異なる４通りのSQLを作成すること）
+
+　　[1]
+SELECT SLIP_DATE 受注日
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+WHERE GOODS_NAME LIKE '軟式ボールLB-320';
+
+
+[2]
+SELECT SLIP_DATE 受注日
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+             JOIN GOODS USING (GOODS_ID)
+WHERE GOODS_NAME LIKE '軟式ボールLB-320';
+
+
+[3]
+SELECT SLIP_DATE 受注日
+FROM GOODS, SLIP,ACCOUNT
+WHERE ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND GOODS_NAME LIKE '軟式ボールLB-320';
+
+
+[4]
+SELECT SLIP_DATE 受注日
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+WHERE GOODS_NAME LIKE '軟式ボールLB-320';
+
+受注日
+--------
+18-06-21
+18-06-25
+18-06-26
+18-07-01
+18-07-01
+
+
+７．大山スポーツから受注した伝票番号、受注日付および商品名を出力せよ
+　　（結合の方法が異なる４通りのSQLを作成すること）
+
+　　[1]
+SELECT SLIP_ID 伝票番号,SLIP_DATE 受注日付,GOODS_NAME 商品名
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+	     NATURAL JOIN CUSTOMER
+WHERE CUST_NAME LIKE '大山スポーツ';
+
+
+[2]
+SELECT SLIP_ID 伝票番号,SLIP_DATE 受注日付,GOODS_NAME 商品名
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+             JOIN GOODS USING (GOODS_ID)
+	     JOIN CUSTOMER USING (CUST_ID)
+WHERE CUST_NAME LIKE '大山スポーツ';
+
+
+[3]
+SELECT SLIP.SLIP_ID 伝票番号,SLIP_DATE 受注日付,GOODS_NAME 商品名
+FROM GOODS, SLIP,ACCOUNT,CUSTOMER
+WHERE ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND CUSTOMER.CUST_ID=SLIP.CUST_ID
+AND CUST_NAME LIKE '大山スポーツ';
+
+
+[4]
+SELECT SLIP.SLIP_ID 伝票番号,SLIP_DATE 受注日付,GOODS_NAME 商品名
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+	     JOIN CUSTOMER ON (CUSTOMER.CUST_ID=SLIP.CUST_ID)
+WHERE CUST_NAME LIKE '大山スポーツ';
+
+
+  伝票番号 受注日付 商品名
+---------- -------- ------------------------
+         5 18-06-28 木製バットBT-70
+
+
+８．アルミバットAT-850を注文したことがある顧客の名前は？
+　　（結合の方法が異なる４通りのSQLを作成すること）
+
+[1]
+SELECT CUST_NAME 顧客名
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+	     NATURAL JOIN CUSTOMER
+WHERE GOODS_NAME LIKE 'アルミバットAT-850';
+
+
+[2]
+SELECT CUST_NAME 顧客名
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+             JOIN GOODS USING (GOODS_ID)
+	     JOIN CUSTOMER USING (CUST_ID)
+WHERE GOODS_NAME LIKE 'アルミバットAT-850';
+
+
+[3]
+SELECT CUST_NAME 顧客名
+FROM GOODS, SLIP,ACCOUNT,CUSTOMER
+WHERE ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND CUSTOMER.CUST_ID=SLIP.CUST_ID
+AND GOODS_NAME LIKE 'アルミバットAT-850';
+
+
+[4]
+SELECT CUST_NAME 顧客名
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+	     JOIN CUSTOMER ON (CUSTOMER.CUST_ID=SLIP.CUST_ID)
+WHERE GOODS_NAME LIKE 'アルミバットAT-850';
+
+
+顧客名
+--------------
+三光スポーツ
+ビクトリア
+
+
+９．2018年6月の顧客毎の受注金額を出力せよ。（結合の方法が異なる４通りのSQLを作成すること）
+
+[1]
+SELECT CUST_NAME 顧客名 ,SUM(QTY*UNIT_PRICE) 受注金額
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+	     NATURAL JOIN CUSTOMER
+WHERE SLIP_DATE LIKE '18-06%'
+GROUP BY CUST_NAME;
+
+
+[2]
+SELECT CUST_NAME 顧客名 ,SUM(QTY*UNIT_PRICE) 受注金額
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+             JOIN GOODS USING (GOODS_ID)
+	     JOIN CUSTOMER USING (CUST_ID)
+WHERE SLIP_DATE LIKE '18-06%'
+GROUP BY CUST_NAME;
+
+
+[3]
+SELECT CUST_NAME 顧客名 ,SUM(QTY*UNIT_PRICE) 受注金額
+FROM GOODS, SLIP,ACCOUNT,CUSTOMER
+WHERE ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND CUSTOMER.CUST_ID=SLIP.CUST_ID
+AND SLIP_DATE LIKE '18-06%'
+GROUP BY CUST_NAME;
+
+
+[4]
+SELECT CUST_NAME 顧客名 ,SUM(QTY*UNIT_PRICE) 受注金額
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+	     JOIN CUSTOMER ON (CUSTOMER.CUST_ID=SLIP.CUST_ID)
+AND SLIP_DATE LIKE '18-06%'
+GROUP BY CUST_NAME;
+
+
+顧客名           受注金額
+-------------- ----------
+ビクトリア          20000
+三光スポーツ       144000
+山田産業           113000
+大山スポーツ       105000
+
+10．両耳ヘルメットH130もしくは片耳ヘルメットH135を発注したことがある顧客の名前を重複を除いて出力せよ。 
+　　なお、重複を除くには” SELECT DISTINCT”を使用すること。
+　　（結合の方法が異なる４通りのSQLを作成すること）
+[1]
+SELECT DISTINCT CUST_NAME
+FROM ACCOUNT NATURAL JOIN SLIP
+             NATURAL JOIN GOODS
+	     NATURAL JOIN CUSTOMER
+WHERE GOODS_NAME LIKE '両耳ヘルメットH130'
+OR GOODS_NAME LIKE '片耳ヘルメットH135';
+
+
+
+[2]
+SELECT DISTINCT CUST_NAME
+FROM ACCOUNT JOIN SLIP USING (SLIP_ID)
+	     JOIN GOODS USING (GOODS_ID)
+	     JOIN CUSTOMER USING (CUST_ID)
+WHERE GOODS_NAME LIKE '両耳ヘルメットH130'
+OR GOODS_NAME LIKE '片耳ヘルメットH135';
+
+
+[3]
+SELECT DISTINCT CUST_NAME
+FROM GOODS, SLIP,ACCOUNT,CUSTOMER
+WHERE CUSTOMER.CUST_ID=SLIP.CUST_ID
+AND ACCOUNT. GOODS_ID=GOODS. GOODS_ID
+AND ACCOUNT. SLIP_ID=SLIP. SLIP_ID
+AND GOODS.GOODS_NAME LIKE '両耳ヘルメットH130'
+OR GOODS.GOODS_NAME LIKE '片耳ヘルメットH135';
+
+
+[4]
+SELECT DISTINCT CUST_NAME
+FROM ACCOUNT JOIN SLIP ON (ACCOUNT. SLIP_ID=SLIP. SLIP_ID)
+             JOIN GOODS ON (ACCOUNT. GOODS_ID=GOODS. GOODS_ID)
+	     JOIN CUSTOMER ON (CUSTOMER.CUST_ID=SLIP.CUST_ID)
+WHERE GOODS_NAME LIKE '両耳ヘルメットH130'
+OR GOODS_NAME LIKE '片耳ヘルメットH135';
+
+
+CUST_NAME
+--------------
+三光スポーツ
+山田産業
+
+
+
+11. 住所が次の条件を満たす顧客名(CUST_NAME)を、住所(ADDRESS)とともに取り出せ。
+　　・大阪市北区の場合は梅田のみ
+　　・大阪市北区以外であればすべて
+　　但し、'梅田のみ' を表現するために、データベース中のデータを見て、
+　　　　NOT IN ('大阪市北区堂島%')
+　　とするのは誤りとします。
+
+SQL> SELECT DISTINCT CUST_NAME, ADDRESS
+  2  FROM ACCOUNT NATURAL JOIN SLIP
+  3               NATURAL JOIN GOODS
+  4          NATURAL JOIN CUSTOMER
+  5  WHERE ADDRESS NOT LIKE '大阪市北区%'
+  6  OR  ADDRESS LIKE '大阪市北区梅田%';
+
+CUST_NAME      ADDRESS
+-------------- ------------------------
+山田産業       大阪市福島区玉川三丁目
+大山スポーツ   大阪市北区梅田三丁目
+上新スポーツ   大阪市中央区北浜一丁目
+
+
+12.１回あたりの合計金額が２万円を超える注文だけを対象として、その注文のSLIP_ID、SLIP_DATE
+　　（出力のタイトルは「売上日付」とすること）、合計売上高（出力のタイトルは「売上高」とする
+　　こと）を出力せよ。
+
+　　なお、このSQL文の出力結果は次の通りとなる。
+
+SQL> SELECT SLIP_ID, SLIP_DATE 売上日付, SUM(UNIT_PRICE*QTY) 売上高
+  2  FROM SLIP NATURAL JOIN ACCOUNT
+  3       NATURAL JOIN GOODS
+  4  GROUP BY SLIP_ID, SLIP_DATE
+  5  HAVING SUM(UNIT_PRICE*QTY)>20000;
+
+   SLIP_ID 売上日付     売上高
+---------- -------- ----------
+         5 18-06-28     105000
+         8 18-07-02     150000
+         3 18-06-25     144000
+         1 18-06-21      93000
+
+
+
+
+13.１回あたりの受注金額の少ない順に、その注文のSLIP_ID、SLIP_DATE（出力のタイトルは「売上日付」
+　　とすること）、合計売上高（出力のタイトルは「売上高」とすること）を出力せよ。
+
+
+SQL> SELECT SLIP_ID, SLIP_DATE 売上日付, SUM(UNIT_PRICE*QTY) 売上高
+  2  FROM SLIP NATURAL JOIN ACCOUNT
+  3       NATURAL JOIN GOODS
+  4  GROUP BY SLIP_ID, SLIP_DATE
+  5  ORDER BY SUM(UNIT_PRICE*QTY);
+
+   SLIP_ID 売上日付     売上高
+---------- -------- ----------
+         6 18-07-01      17000
+         7 18-07-01      18000
+         2 18-06-25      20000
+         4 18-06-26      20000
+         1 18-06-21      93000
+         5 18-06-28     105000
+         3 18-06-25     144000
+         8 18-07-02     150000
+
+8行が選択されました。
+
+
+
+第２部：テーブルEMP、DEPTを使って以下の質問のＳＱＬ文を作成せよ。
+
+テーブルどうしの結合は、異なったテーブルだけでなく、同じテーブルでも可能です。
+ただしこの場合は、どちらのテーブルをさしているかがはっきりとわかるように、以下のようにFROM
+句の中で識別子を使用します。以下の例では、Aと仮に名前付けられたテーブルEMPと、Bと仮に名前
+付けられたテーブルEMPを使用し、A.EMPNOは、Aの属性EMPNOを指しています。
+
+　　・EMPNOが7900以上の人を対象として、EMPNO、氏名、及び上司(MGR)氏名を出力せよ。
+
+　　  SQL> SELECT A.EMPNO,A.ENAME 氏名, B.ENAME 上司氏名
+　　  2    FROM EMP A, EMP B
+　　  3    WHERE A.MGR = B.EMPNO  AND  A.EMPNO >= 7900;
+
+          EMPNO 氏名                 上司氏名
+     ---------- -------------------- --------------------
+           7900 JAMES                BLAKE
+           7902 FORD                 JONES
+           7934 MILLER               CLARK
+
+上記例を参考にして以下の課題を実行してください。
+
+１．誰かの上司になっている人の氏名とJOBを出力せよ（SELECT DISTINCTを使うこと）。
+　　（結合の方法が異なる２通りのSQLを作成せよ）
+
+
+[1]
+SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A, EMP B
+WHERE A.EMPNO = B.MGR;
+
+[2]
+SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A
+JOIN EMP B ON (A.EMPNO = B.MGR);
+
+
+氏名                 JOB
+-------------------- ------------------
+CLARK                MANAGER
+JONES                MANAGER
+SCOTT                ANALYST
+KING                 PRESIDENT
+FORD                 ANALYST
+BLAKE                MANAGER
+
+6行が選択されました。
+
+
+２．誰かの上司の上司になっている人の氏名とJOBを出力せよ。
+　　（結合の方法が異なる２通りのSQLを作成せよ）
+
+[1]SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A, EMP B, EMP C
+WHERE A.EMPNO = B.MGR
+AND B.EMPNO = C.MGR;
+
+
+[2]SELECT DISTINCT A.ENAME 氏名, A.JOB JOB
+FROM EMP A JOIN EMP B ON (A.EMPNO = B.MGR)
+JOIN EMP C ON (B.EMPNO = C.MGR);
+
+
+氏名                 JOB
+-------------------- ------------------
+JONES                MANAGER
+KING                 PRESIDENT
+
+
+３．社長のKINGから数えて部下の部下の部下にあたる人の氏名とJOBを出力せよ。
+　　（結合の方法が異なる２通りのSQLを作成せよ）
+
+
+[1]SELECT A.ENAME 社長, B.ENAME 社長の部下, C.ENAME その部下, D.ENAME その部下, D.JOB JOB
+FROM EMP A, EMP B, EMP C, EMP D
+WHERE A.EMPNO = B.MGR
+AND B.EMPNO = C.MGR
+AND C.EMPNO = D.MGR;
+
+
+[2]SELECT A.ENAME 社長, B.ENAME 社長の部下, C.ENAME その部下, D.ENAME その部下, D.JOB JOB
+FROM EMP A JOIN EMP B ON (A.EMPNO = B.MGR)
+JOIN EMP C ON (B.EMPNO = C.MGR)
+JOIN EMP D ON (C.EMPNO = D.MGR);
+
+
+社長                 社長の部下           その部下             その部下
+    JOB
+-------------------- -------------------- -------------------- ----------------
+--- ------------------
+KING                 JONES                FORD                 SMITH
+    CLERK
+KING                 JONES                SCOTT                ADAMS
+    CLERK
+
+
+４．EMPNO、ENAME、JOB、およびその上司のENAME、JOB、LOCを取り出せ。
+　　（結合の方法が異なる２通りのSQLを作成せよ）
+
+
+[1]SELECT A.EMPNO 社員番号, A.ENAME 氏名, A.JOB JOB, B.ENAME 上司氏名, B.JOB 上司JOB, LOC 上司勤務地
+FROM EMP A, EMP B, DEPT
+WHERE A.MGR = B.EMPNO
+AND B.DEPTNO = DEPT.DEPTNO;
+
+
+[2]SELECT A.EMPNO 社員番号, A.ENAME 氏名, A.JOB JOB, B.ENAME 上司氏名, B.JOB 上司JOB, LOC 上司勤務地
+FROM EMP A JOIN EMP B ON (A.MGR = B.EMPNO)
+JOIN DEPT ON (B.DEPTNO = DEPT.DEPTNO);
+
+
+  社員番号 氏名                 JOB                上司氏名             上司JOB
+           上司勤務地
+---------- -------------------- ------------------ -------------------- --------
+---------- ------------------------
+      7369 SMITH                CLERK              FORD                 ANALYST
+           DALLAS
+      7499 ALLEN                SALESMAN           BLAKE                MANAGER
+           CHICAGO
+      7521 WARD                 SALESMAN           BLAKE                MANAGER
+           CHICAGO
+      7566 JONES                MANAGER            KING                 PRESIDEN
+T          NEW YORK
+      7654 MARTIN               SALESMAN           BLAKE                MANAGER
+           CHICAGO
+      7698 BLAKE                MANAGER            KING                 PRESIDEN
+T          NEW YORK
+      7782 CLARK                MANAGER            KING                 PRESIDEN
+T          NEW YORK
+      7788 SCOTT                ANALYST            JONES                MANAGER
+           DALLAS
+      7844 TURNER               SALESMAN           BLAKE                MANAGER
+           CHICAGO
+      7876 ADAMS                CLERK              SCOTT                ANALYST
+           DALLAS
+      7900 JAMES                CLERK              BLAKE                MANAGER
+           CHICAGO
+      7902 FORD                 ANALYST            JONES                MANAGER
+           DALLAS
+      7934 MILLER               CLERK              CLARK                MANAGER
+           NEW YORK
+
+13行が選択されました。
+
+
+５．社員の中で、上司よりも早くからこの会社で働いている人の名前を出力せよ。
+
+SQL> SELECT A.ENAME ENAME
+  2  FROM EMP A, EMP B
+  3  WHERE A.MGR = B.EMPNO
+  4  AND A.HIREDATE < B.HIREDATE;
+
+ENAME
+--------------------
+ALLEN
+WARD
+BLAKE
+JONES
+CLARK
+SMITH
+
+6行が選択されました。
+
+６．職種が上司とは異なる社員の名前と職種、上司の名前と職種一覧を出力せよ。
+
+SQL> SELECT A.ENAME 社員名, A.JOB JOB, B.ENAME 上司氏名, B.JOB JOB
+  2  FROM EMP A, EMP B
+  3  WHERE A.MGR = B.EMPNO
+  4  AND A.JOB != B.JOB;
+
+社員名               JOB                上司氏名             JOB
+-------------------- ------------------ -------------------- ------------------
+FORD                 ANALYST            JONES                MANAGER
+SCOTT                ANALYST            JONES                MANAGER
+TURNER               SALESMAN           BLAKE                MANAGER
+ALLEN                SALESMAN           BLAKE                MANAGER
+WARD                 SALESMAN           BLAKE                MANAGER
+JAMES                CLERK              BLAKE                MANAGER
+MARTIN               SALESMAN           BLAKE                MANAGER
+MILLER               CLERK              CLARK                MANAGER
+ADAMS                CLERK              SCOTT                ANALYST
+BLAKE                MANAGER            KING                 PRESIDENT
+JONES                MANAGER            KING                 PRESIDENT
+CLARK                MANAGER            KING                 PRESIDENT
+SMITH                CLERK              FORD                 ANALYST
+
+13行が選択されました。
+
+
+７．上司とは勤務地が異なる人の氏名、勤務地、上司氏名、上司勤務地を出力せよ。
+　　（結合の方法が異なる２通りのSQLを作成せよ）
+
+
+[1]SELECT A.ENAME 氏名, C.LOC 勤務地, B.ENAME 上司氏名, D.LOC 上司勤務地
+FROM EMP A, EMP B, DEPT C, DEPT D
+WHERE A.DEPTNO = C.DEPTNO
+AND B.DEPTNO = D.DEPTNO
+AND A.MGR = B.EMPNO
+AND A.DEPTNO != B.DEPTNO;
+
+
+[2]SELECT A.ENAME 氏名, C.LOC 勤務地, B.ENAME 上司氏名, D.LOC 上司勤務地
+FROM EMP A
+JOIN EMP B ON (A.MGR = B.EMPNO)
+JOIN DEPT C ON (A.DEPTNO = C.DEPTNO)
+JOIN DEPT D ON (B.DEPTNO = D.DEPTNO)
+WHERE A.DEPTNO != B.DEPTNO;
+
+
+氏名                 勤務地                   上司氏名             上司勤務地
+-------------------- ------------------------ -------------------- -------------
+-----------
+BLAKE                CHICAGO                  KING                 NEW YORK
+JONES                DALLAS                   KING                 NEW YORK
+
+
+８．勤務地がCHICAGOもしくはNEW YORKである社員のEMPNOとENAMEを出力せよ。
+　　（結合の方法が異なる４通りのSQLを作成せよ）
+
+
+[1]SELECT EMPNO, ENAME
+FROM EMP ,DEPT
+WHERE EMP.DEPTNO = DEPT.DEPTNO
+AND LOC IN ('CHICAGO', 'NEW YORK');
+
+
+[2]SELECT EMPNO, ENAME
+FROM EMP JOIN DEPT ON (EMP.DEPTNO = DEPT.DEPTNO)
+WHERE LOC IN ('CHICAGO', 'NEW YORK');
+
+
+[3]SELECT EMPNO, ENAME
+FROM EMP JOIN DEPT USING (DEPTNO)
+WHERE LOC IN ('CHICAGO', 'NEW YORK');
+
+
+[4]SELECT EMPNO, ENAME
+FROM EMP NATURAL JOIN DEPT
+WHERE LOC IN ('CHICAGO', 'NEW YORK');
+
+
+     EMPNO ENAME
+---------- --------------------
+      7782 CLARK
+      7839 KING
+      7934 MILLER
+      7521 WARD
+      7844 TURNER
+      7499 ALLEN
+      7900 JAMES
+      7698 BLAKE
+      7654 MARTIN
+
+9行が選択されました。
+
+
+９．勤務地がCHICAGOもしくはNEW YORKでない社員のEMPNOとENAMEを出力せよ。
+　　（結合の方法が異なる４通りのSQLを作成すること）
+
+
+[1]SELECT EMPNO, ENAME
+FROM EMP ,DEPT
+WHERE EMP.DEPTNO = DEPT.DEPTNO
+AND LOC NOT IN ('CHICAGO', 'NEW YORK');
+
+[2]SELECT EMPNO, ENAME
+FROM EMP JOIN DEPT ON (EMP.DEPTNO = DEPT.DEPTNO)
+WHERE LOC NOT IN ('CHICAGO', 'NEW YORK');
+
+[3]SELECT EMPNO, ENAME
+FROM EMP JOIN DEPT USING (DEPTNO)
+WHERE LOC NOT IN ('CHICAGO', 'NEW YORK');
+
+[4]SELECT EMPNO, ENAME
+FROM EMP NATURAL JOIN DEPT
+WHERE LOC NOT IN ('CHICAGO', 'NEW YORK');
+
+
+     EMPNO ENAME
+---------- --------------------
+      7566 JONES
+      7902 FORD
+      7876 ADAMS
+      7369 SMITH
+      7788 SCOTT
+
+
+10.部門毎の所在地と社員数を出力せよ。但し、社員数が０の部門は出力不要。
+
+SQL> SELECT DNAME 部門名, LOC 所在地, COUNT(EMPNO) 社員数
+  2  FROM DEPT NATURAL JOIN EMP
+  3  GROUP BY DNAME, LOC;
+
+部門名                   所在地                       社員数
+------------------------ ------------------------ ----------
+RESEARCH                 DALLAS                            5
+SALES                    CHICAGO                           6
+ACCOUNTING               NEW YORK                          3
+
+11.部門毎の所在地と社員数を出力せよ。但し、社員数が０の部門も出力すること。
+
+SQL> SELECT DNAME 部門名, LOC 所在地, COUNT(EMPNO) 社員数
+  2  FROM DEPT LEFT OUTER JOIN EMP
+  3  ON DEPT.DEPTNO = EMP.DEPTNO
+  4  GROUP BY DNAME, LOC;
+
+部門名                   所在地                       社員数
+------------------------ ------------------------ ----------
+RESEARCH                 DALLAS                            5
+SALES                    CHICAGO                           6
+ACCOUNTING               NEW YORK                          3
+OPERATIONS               BOSTON                            0
+
+12.各社員の氏名とその上司の氏名を出力せよ。但し、上司が存在しない社員（社長のKING）
+　 については上司の列を空のまま出力すること。
+  （KINGの行がない13行しか出力されないSQLではいけない）
+
+SQL> SELECT A.ENAME 氏名, B.ENAME 上司
+  2  FROM EMP A LEFT OUTER JOIN EMP B
+  3  ON A.MGR = B.EMPNO;
+
+氏名                 上司
+-------------------- --------------------
+FORD                 JONES
+SCOTT                JONES
+JAMES                BLAKE
+TURNER               BLAKE
+MARTIN               BLAKE
+WARD                 BLAKE
+ALLEN                BLAKE
+MILLER               CLARK
+ADAMS                SCOTT
+CLARK                KING
+BLAKE                KING
+JONES                KING
+SMITH                FORD
+KING
+
+14行が選択されました。
+
+
+

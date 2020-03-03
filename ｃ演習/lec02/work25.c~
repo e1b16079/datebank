@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main(void){
+    int r;
+    double pai=3.14;
+    double s;
+    double v;
+
+    printf("球の半径を入力してください：");
+    scanf("%d",&r);
+    
+    s=4*pai*r*r;
+    v=4*pai*r*r*r/3;
+
+    printf("この球の表面積は%.2fです。\n",s);
+    printf("この球の体積は%.2fです。\n",v);
+
+    return 0;
+}

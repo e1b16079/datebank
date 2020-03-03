@@ -1,0 +1,15 @@
+     1                          PRG0401 START
+     2  0000: 1010 000C         	LD	GR1,DATA1
+     3  0002: 1421              	LD	GR2,GR1
+     4  0003: 1431              	LD	GR3,GR1
+     5  0004: 1040 000D         	LD	GR4,DATA2
+     6  0006: 3414              	AND	GR1,GR4
+     7  0007: 3120 000D         	OR	GR2,DATA2
+     8  0009: 3230 000E         	XOR	GR3,=#FF00
+     9  000B: 8100              	RET
+    10  000C: ABCD              DATA1	DC	#ABCD
+    11  000D: EE33              DATA2	DC	#EE33
+        000E: FF00              =#FF00	DC	#FF00
+    12                          	END
+
+      0 Errors

@@ -1,0 +1,10 @@
+INI 000006 × ファイル[work18.html]が作成されていません。
+PRE Yc2004 ■ work18.javaに[1]個以上((0))のパターン[class work18 ]を含む必要があります。そのため実行できません。
+PRE Yd2004 ■ work18.javaに[1]個以上((0))のパターン[class work18 extends (|java.applet.)Applet]を含む必要があります。そのため実行できません。
+PAT 01FFFF × work18.javaのクラス[paint(Graphics)]には４種類以上((0))の描画メソッドがありません。
+PAT 02FFFF × work18.javaのクラス[paint(Graphics)]には５個以上((0))の描画メソッドがありません。
+PAT 03FFFF × work18.javaのクラス[paint(Graphics)]には４種類以上((0))の色を使っていません。
+PAT ZW1207 △ ファイル[work18.html]が作成されていません。
+CMP 003831 × エラー[work18.java:((6)): 構文解析中にファイルの終わりに移りました]でコンパイルできません。
+SMK 006102 × コンパイルエラーがあるためプログラムを実行できません。
+REP Y31207 △ ファイル[work18.class]が作成されていません。

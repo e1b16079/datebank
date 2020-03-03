@@ -1,0 +1,40 @@
+     1                          ;
+     2                          ;  学生番号：B16079  氏名：前田　剛志
+     3                          ;
+     4                          PRG1203	START
+     5  0000: 1210 0026         	LAD	GR1,TABLE
+     6  0002: 1220 0008         	LAD	GR2,8
+     7  0004: 1230 FFFF         	LAD	GR3,-1
+     8  0006: 8000 000B         	CALL	COUNT
+     9  0008: 1100 002E         	ST	GR0,KOSU
+    10  000A: 8100              	RET
+    11  000B: 7001 0000         COUNT	PUSH	0,GR1
+    12  000D: 7002 0000         	PUSH	0,GR2
+    13  000F: 1200 0000         	LAD	GR0,0
+    14  0011: 4020 002F         LOOP	CPA	GR2,=0
+    15  0013: 6300 0023         	JZE	OWA
+    16  0015: 4031 0000         	CPA	GR3,0,GR1
+    17  0017: 6500 001D         	JPL	TOBI
+    18  0019: 6300 001D         	JZE	TOBI
+    19  001B: 2000 0030         	ADDA	GR0,=1	
+    20  001D: 2010 0030         TOBI	ADDA	GR1,=1
+    21  001F: 2020 0031         	ADDA	GR2,=-1
+    22  0021: 6400 0011         	JUMP	LOOP
+    23  0023: 7120              OWA	POP	GR2
+    24  0024: 7110              	POP	GR1
+    25  0025: 8100              	RET
+    26  0026: FFFF              TABLE	DC	-1,-8,0,9,-4,-1,-3,1
+        0027: FFF8              
+        0028: 0000              
+        0029: 0009              
+        002A: FFFC              
+        002B: FFFF              
+        002C: FFFD              
+        002D: 0001              
+    27  002E: 0001              KOSU	DS	1
+        002F: 0000              =0	DC	0
+        0030: 0001              =1	DC	1
+        0031: FFFF              =-1	DC	-1
+    28                          	END
+
+      0 Errors

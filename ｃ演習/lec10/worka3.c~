@@ -1,0 +1,22 @@
+#include<stdio.h>
+
+  int fact(int a){
+    int i;
+    int fra=1;
+
+    for(i=1;i<a;i++){
+     fra=fra*i;
+  }
+  return fra;
+}
+
+int main(void){
+   int n, ans;
+
+   printf("値を入力して下さい:");
+   scanf("%d", &n);
+
+   ans=fact(n);
+   printf("%dの階乗は%dです。\n",n,ans);
+   return 0;
+}

@@ -1,0 +1,12 @@
+     1                          PRG0602 START
+     2  0000: 1210 0000         	LAD	GR1,0
+     3  0002: 1220 0000         	LAD	GR2,0
+     4  0004: 1211 0001         LOOP	LAD	GR1,1,GR1
+     5  0006: 2421              	ADDA	GR2,GR1
+     6  0007: 4020 000C         	CPA	GR2,=300
+     7  0009: 6100 0004         	JMI	LOOP
+     8  000B: 8100              	RET
+        000C: 012C              =300	DC	300
+     9                          	END
+
+      0 Errors

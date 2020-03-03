@@ -1,0 +1,21 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+
+   int a, i, j;
+   printf("整数を入力して下さい：");
+   scanf("%d", &amp;a);
+   while(a&gt;=0){
+    for(i=a;i&gt;=10;i=i-10){
+     printf("★");
+    }
+    for(j=i;j&gt;0;j--){
+     printf("☆");
+    }
+   printf("\n");
+   printf("整数を入力して下さい：");
+   scanf("%d", &amp;a);
+   }
+   return 0;
+}
+</pre></body></html>

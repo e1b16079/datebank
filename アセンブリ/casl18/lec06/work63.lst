@@ -1,0 +1,15 @@
+     1                          PRG0603 START
+     2  0000: 1210 0000         	LAD	GR1,0
+     3  0002: 1220 0000         	LAD	GR2,0
+     4  0004: 4020 0010         LOOP	CPA	GR2,=300
+     5  0006: 6500 000F         	JPL	SKIP
+     6  0008: 6300 000F         	JZE	SKIP
+     7  000A: 1211 0001         	LAD	GR1,1,GR1
+     8  000C: 2421              	ADDA	GR2,GR1
+     9  000D: 6400 0004         	JUMP	LOOP
+    10                          ;
+    11  000F: 8100              SKIP	RET
+        0010: 012C              =300	DC	300
+    12                          	END
+
+      0 Errors

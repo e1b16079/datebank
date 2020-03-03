@@ -1,0 +1,39 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+int main(void){
+    int a, b, c, tmp;
+
+    printf("1番目の整数を入力して下さい：");
+    scanf("%d",&amp;a);
+    printf("2番目の整数を入力して下さい：");
+    scanf("%d",&amp;b);
+    printf("3番目の整数を入力して下さい：");
+    scanf("%d",&amp;c);
+
+    printf("入力された初期順は（%d,%d,%d）です\n",a,b,c);
+
+    if(a&lt;b){
+    tmp=a;
+    a=b;
+    b=tmp;
+    }
+    if(a&lt;c){
+    tmp=a;
+    a=c;
+    c=tmp;
+    }
+    if(b&lt;c){
+    tmp=b;
+    b=c;
+    c=tmp;
+    }
+    printf("入力された整数は降順（%d,%d,%d）に入れ替わりました。\n",a,b,c);
+     return 0;
+}
+
+
+
+
+
+
+</pre></body></html>

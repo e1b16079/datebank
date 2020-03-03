@@ -1,0 +1,31 @@
+<html><body><pre>
+#include&lt;stdio.h&gt;
+#define N 10
+int main(void){
+   int data[N], i, j, k, tmp;
+
+   for(i=0;i&lt;N;i++){
+    printf("data[%d]:",i);
+    scanf("%d",&amp;data[i]);
+   }
+
+   for(i=0;i&lt;N;i++){
+     for(j=i;j&lt;N;j++){
+      if(data[j]&lt;data[i]){
+         tmp=data[i];
+    data[i]=data[j];
+    data[j]=tmp;
+      }
+   }
+
+}
+  
+   printf("配列a =");
+   for (k=0;k&lt;N;k++){
+    printf("%2d ",data[k]);
+   }
+   printf("\n");
+
+   return 0;
+}
+</pre></body></html>

@@ -1,0 +1,23 @@
+     1                          PRG0702	START
+     2  0000: 1210 0003         	LAD	GR1,3
+     3  0002: 1220 000A         	LAD	GR2,10
+     4  0004: 8000 000B         	CALL	MULT
+     5  0006: 8000 000B         	CALL	MULT
+     6  0008: 8000 000B         	CALL	MULT
+     7  000A: 8100              	RET
+     8  000B: 7002 0000         MULT	PUSH	0,GR2
+     9  000D: 7003 0000         	PUSH	0,GR3
+    10  000F: 1431              	LD	GR3,GR1
+    11  0010: 1210 0000         	LAD	GR1,0
+    12  0012: 4020 001E         LOOP	CPA	GR2,=0
+    13  0014: 6300 001B         	JZE	FIN
+    14  0016: 2413              	ADDA	GR1,GR3
+    15  0017: 1222 FFFF         	LAD	GR2,-1,GR2
+    16  0019: 6400 0012         	JUMP	LOOP
+    17  001B: 7130              FIN	POP	GR3
+    18  001C: 7120              	POP	GR2
+    19  001D: 8100              	RET
+        001E: 0000              =0	DC	0
+    20                          	END
+
+      0 Errors

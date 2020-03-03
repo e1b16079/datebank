@@ -1,0 +1,29 @@
+<!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre onMouseDown="return false;" onSelectStart="return false"><tt><font color="#000000">01:</font> <b><font color="#000080">#include</font></b> <font color="#FF0000">&lt;stdio.h&gt;</font>
+<font color="#000000">02:</font> <b><font color="#000080">#include</font></b> <font color="#FF0000">&lt;stdlib.h&gt;</font>
+<font color="#000000">03:</font> 
+<font color="#000000">04:</font> <font color="#009900">void</font> <b><font color="#000000">padd</font></b><font color="#990000">(</font><font color="#009900">double</font> <font color="#990000">*</font>x<font color="#990000">,</font> <font color="#009900">double</font> d<font color="#990000">)</font><font color="#FF0000">{</font>
+<font color="#000000">05:</font>   <font color="#990000">*</font>x <font color="#990000">=</font> <font color="#990000">*</font>x <font color="#990000">+</font> d<font color="#990000">;</font>
+<font color="#000000">06:</font> <font color="#FF0000">}</font>
+<font color="#000000">07:</font> 
+<font color="#000000">08:</font> <font color="#009900">int</font> <b><font color="#000000">main</font></b><font color="#990000">(</font><font color="#009900">int</font> argc<font color="#990000">,</font> <font color="#009900">char</font> <font color="#990000">*</font>argv<font color="#990000">[])</font> <font color="#FF0000">{</font>
+<font color="#000000">09:</font>   <font color="#009900">double</font> x<font color="#990000">;</font>
+<font color="#000000">10:</font>   <b><font color="#0000FF">if</font></b><font color="#990000">(</font>argc <font color="#990000">&lt;</font> <font color="#993399">1</font><font color="#990000">)</font><font color="#FF0000">{</font>
+<font color="#000000">11:</font>     <b><font color="#000000">fprintf</font></b><font color="#990000">(</font>stderr<font color="#990000">,</font> <font color="#FF0000">"引数を指定してください。</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">);</font>
+<font color="#000000">12:</font>     <b><font color="#000000">exit</font></b><font color="#990000">(</font><font color="#993399">1</font><font color="#990000">);</font>
+<font color="#000000">13:</font>   <font color="#FF0000">}</font>
+<font color="#000000">14:</font> 
+<font color="#000000">15:</font>   x <font color="#990000">=</font> <b><font color="#000000">atof</font></b><font color="#990000">(</font>argv<font color="#990000">[</font><font color="#993399">1</font><font color="#990000">]);</font>
+<font color="#000000">16:</font> 
+<font color="#000000">17:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"padd(%.2f, %.2f)</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font>x<font color="#990000">,</font><b><font color="#000000">atof</font></b><font color="#990000">(</font>argv<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]));</font>
+<font color="#000000">18:</font> 
+<font color="#000000">19:</font>   <b><font color="#000000">padd</font></b><font color="#990000">(&amp;</font>x<font color="#990000">,</font><b><font color="#000000">atof</font></b><font color="#990000">(</font>argv<font color="#990000">[</font><font color="#993399">2</font><font color="#990000">]));</font>
+<font color="#000000">20:</font> 
+<font color="#000000">21:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"  ==&gt; %.2f</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font>x<font color="#990000">);</font>
+<font color="#000000">22:</font>   <b><font color="#0000FF">return</font></b> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">23:</font> <font color="#FF0000">}</font>
+<font color="#000000">24:</font> 
+<font color="#000000">25:</font> </tt></pre>

@@ -1,0 +1,15 @@
+;
+;  学生番号：B16079  氏名：前田　剛志
+;
+PRGM1	START
+	LD	GR1,X
+	LD	GR2,X
+	SLA	GR1,3
+	SUBA	GR1,GR2
+	SRA	GR2,2
+	SUBA	GR1,GR2
+	ST	GR1,Y
+	RET
+X	DC	-8
+Y	DS	1
+	END

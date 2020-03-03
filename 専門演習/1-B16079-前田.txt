@@ -1,0 +1,429 @@
+　　　　　　　　　　情報システム専門演習 報告書
+　　　　　　　　　　　　　（2018年度　後期）
+
+
+
+
+課題番号      課題-(1) 
+
+担当教員名　　：水谷先生、山内先生
+
+クラス名（Ａ or Ｂ）　＿＿＿B＿＿＿
+
+
+報告者名
+
+学生番号：B16079                氏    名：前田　剛志
+
+
+
+***************************************************************
+
+
+
+情報システム専門演習     課題（１）
+　　　　　　　　　　　　　　　　　　　　　　　　　　　2018.10.1
+
+以下の各問題に対してSQL文を作成し、実行結果と共にレポートにまとめて提出してください。
+提出締切り：ホームページ参照
+
+------------------------------------------------------------------------
+
+第０部
+
+１）ACCOUNTの内容が下記の通りであると仮定して下記の問に答えよ。
+　　なお、これら課題はSQLを実行させるのではなく、自分で考えて答えること。
+
+　　ACCOUNT_ID   SLIP_ID  GOODS_ID       QTY
+　　---------- --------- --------- ---------
+　　         1         1         2        10
+　　         2         1         3         5
+　　         3         1         1        15
+　　         4         2         1        20
+　　         5         3         3         5
+　　         6         3         4        45
+
+
+1-1）教科書の例題1-22_SQL文の出力結果はどうなるかを書け。
+
+SQL> SELECT * FROM ACCOUNT WHERE SLIP_ID BETWEEN 2 AND 3;
+
+ACCOUNT_ID    SLIP_ID   GOODS_ID        QTY
+---------- ---------- ---------- ----------
+         4          2          1         20
+         5          3          1          6
+         6          3          2         12
+         7          3          3          2
+         8          3          4          3
+         9          3          5          3
+        10          3          6          3
+
+7行が選択されました。
+
+
+1-2) 教科書の例題1-28_SQL文の出力結果はどうなるかを書け。
+
+SQL> SELECT ACCOUNT_ID 受注明細番号 FROM ACCOUNT WHERE GOODS_ID IN (3,4);
+
+受注明細番号
+------------
+           2
+           7
+           8
+          13
+          18
+
+1-3) 教科書の例題1-34_SQL文の出力結果はどうなるかを書け。
+
+SQL> SELECT * FROM ACCOUNT ORDER BY GOODS_ID DESC, SLIP_ID
+
+ACCOUNT_ID    SLIP_ID   GOODS_ID        QTY
+---------- ---------- ---------- ----------
+         3          1          6          3
+        10          3          6          3
+        14          6          6          3
+         9          3          5          3
+         8          3          4          3
+        18          8          4          6
+         2          1          3          5
+         7          3          3          2
+        13          5          3          7
+         1          1          2         12
+         6          3          2         12
+        12          4          2         10
+        15          6          2         10
+        17          7          2         12
+         4          2          1         20
+         5          3          1          6
+        11          4          1         15
+        16          7          1         12
+
+18行が選択されました。
+
+
+1-4）教科書の例題1-39_SQL文の出力結果はどうなるかを書け。
+
+SQL> SELECT GOODS_ID 商品番号, SUM(QTY)　受注総数
+  2  FROM ACCOUNT
+  3  GROUP BY GOODS_ID
+  4  HAVING SUM(QTY) >= 30;
+
+  商品番号   受注総数
+---------- ----------
+         1         53
+         2         56
+
+
+第１部
+
+1) 表SALGRADEにHISALとLOSALの差を追加して取り出せ。
+
+
+    [出力形式]
+SQL> SELECT GRADE,LOSAL,HISAL,HISAL-LOSAL FROM SALGRADE;
+
+     GRADE      LOSAL      HISAL HISAL-LOSAL
+---------- ---------- ---------- -----------
+         1        700       1200         500
+         2       1201       1400         199
+         3       1401       2000         599
+         4       2001       3000         999
+         5       3001       9999        6998
+
+
+2) 全社員の人数と給与総額を、社員数、合計給与の名前で出力せよ。
+
+SQL> SELECT COUNT(*) 社員数,SUM(SAL) 合計給与
+  2  FROM EMP;
+
+    社員数   合計給与
+---------- ----------
+        14      29025
+
+
+
+3) 表EMPから給与が$2900以上の人の名前、職種と給与のみを取出し、給与の少ない順にソートして出力せよ。
+
+SQL> SELECT ENAME, JOB, SAL
+  2  FROM EMP
+  3  WHERE SAL>=2900
+  4  ORDER BY SAL;
+
+ENAME                JOB                       SAL
+-------------------- ------------------ ----------
+JONES                MANAGER                  2975
+FORD                 ANALYST                  3000
+SCOTT                ANALYST                  3000
+KING                 PRESIDENT                5000
+
+
+4)表SALGRADEから、列GRADE、列LOSALの値を20%ダウンしたもの、列HISALの値を20%アップしたものを取り出せ。
+  但し、出力に際し、列LOSALの値を20%ダウンしたものの列名をN_LOSAL、列HISALの値を20%アップしたものの
+  列名をN_HISALとせよ。
+
+SQL> SELECT GRADE, LOSAL*0.8 N_LOSAL, HISAL*1.2 N_HISAL
+  2  FROM SALGRADE;
+
+     GRADE    N_LOSAL    N_HISAL
+---------- ---------- ----------
+         1        560       1440
+         2      960.8       1680
+         3     1120.8       2400
+         4     1600.8       3600
+         5     2400.8    11998.8
+
+
+
+5) 表EMPから給与が$1300以上$2500以下の人の名前を給与の多い順に出力せよ。
+　（２通りのSQLを作成すること）
+（1）
+SQL> SELECT ENAME, SAL
+  2  FROM EMP
+  3  WHERE SAL BETWEEN 1300 AND 2500
+  4  ORDER BY SAL DESC;
+
+(2)SELECT ENAME, SAL
+FROM EMP
+WHERE SAL>=1300 AND 2500>=SAL
+ORDER BY SAL DESC;
+
+
+ENAME                       SAL
+-------------------- ----------
+CLARK                      2450
+ALLEN                      1600
+TURNER                     1500
+MILLER                     1300
+
+
+
+6) オフィス（LOC)がCHICAGO、BOSTON以外にある部門の名称と場所を出力せよ。
+
+SQL> SELECT DNAME, LOC
+  2  FROM DEPT
+  3  WHERE LOC NOT IN('CHICAGO','BOSTON');
+
+DNAME                    LOC
+------------------------ ------------------------
+ACCOUNTING               NEW YORK
+RESEARCH                 DALLAS
+
+    
+
+7) 所属する部門番号（DEPTNO）が20である人の人数と平均給与を求めよ。
+SQL> SELECT COUNT(*), AVG(SAL)
+  2  FROM EMP
+  3  WHERE DEPTNO=20;
+
+  COUNT(*)   AVG(SAL)
+---------- ----------
+         5       2175
+
+
+8) 表EMPにおいて名前が"M"で始まらないものを出力せよ。
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE ENAME NOT LIKE'M%';
+
+ENAME
+--------------------
+SMITH
+ALLEN
+WARD
+JONES
+BLAKE
+CLARK
+SCOTT
+KING
+TURNER
+ADAMS
+JAMES
+FORD
+
+12行が選択されました。
+
+
+
+9) 所属社員数が４人以上の部門だけを対象として、部門番号と社員数と平均給与を求めよ。
+　 但し、平均給与の値は、小数点以下四捨五入かつ３桁毎にカンマを入れて出力すること。
+
+SQL> SELECT DEPTNO, COUNT(*) 社員数,TO_CHAR(AVG(SAL),'999,999') 平均給与
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  HAVING COUNT(*)>=4;
+
+    DEPTNO     社員数 平均給与
+---------- ---------- --------
+        30          6    1,567
+        20          5    2,175
+
+
+
+10) 部門(DEPTNO)毎の最低給与、最高給与を求め、最低給与の高い順に出力せよ。
+
+SQL> SELECT DEPTNO, MIN(SAL),MAX(SAL)
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  ORDER BY MIN(SAL) DESC;
+
+    DEPTNO   MIN(SAL)   MAX(SAL)
+---------- ---------- ----------
+        10       1300       5000
+        30        950       2850
+        20        800       3000
+
+11) 1982年1月1日以降から勤務している人の名前と、"1999年12月31日"の形式にした採用日付を
+　　列名「採用年月日」として出力せよ。
+
+SQL> SELECT ENAME,TO_CHAR(HIREDATE,'YYYY"年"MM"月"DD"日"') 採用年月日
+  2  FROM EMP
+  3  WHERE HIREDATE >= '1982-01-01';
+
+ENAME                採用年月日
+-------------------- --------------
+SCOTT                1987年04月19日
+ADAMS                1987年05月23日
+MILLER               1982年01月23日
+
+
+12)職種毎の人数、平均給与、最低給与、最高給与、給与総額を以下の形式で求めよ。
+
+SQL> SELECT JOB,COUNT(*) 社員数,MIN(SAL) 最低給与,TO_CHAR(AVG(SAL),'999,999') 平
+均給与,MAX(SAL) 最高給与,
+  2  SUM(SAL) 給与総額
+  3  FROM EMP
+  4  GROUP BY JOB;
+
+JOB                    社員数   最低給与 平均給与   最高給与   給与総額
+------------------ ---------- ---------- -------- ---------- ----------
+CLERK                       4        800    1,038       1300       4150
+SALESMAN                    4       1250    1,400       1600       5600
+PRESIDENT                   1       5000    5,000       5000       5000
+MANAGER                     3       2450    2,758       2975       8275
+ANALYST                     2       3000    3,000       3000       6000
+
+13) 部門ごとの社員数、給与(SAL)の合計(給与総額)を求め、給与総額の多い順に出力せよ。
+
+SQL> SELECT DEPTNO, COUNT(*) 社員数, SUM(SAL) 給与総額
+  2  FROM EMP
+  3  GROUP BY DEPTNO
+  4  ORDER BY SUM(SAL) DESC;
+
+    DEPTNO     社員数   給与総額
+---------- ---------- ----------
+        20          5      10875
+        30          6       9400
+        10          3       8750
+
+
+
+14）テーブル CUSTOMER の ADDRESS(住所)欄に格納されている値の最大文字数を求めよ。
+
+SQL> SELECT LENGTH(MAX(ADDRESS)) 住所の最大文字数
+  2  FROM CUSTOMER;
+
+住所の最大文字数
+----------------
+              10
+
+15) 以下のリストを出力するSQL文を作成せよ。
+
+SELECT ADDRESS||' '|| CUST_NAME||'御中' 顧客一覧
+FROM CUSTOMER;
+
+　　顧客一覧
+　　--------------------------------------------
+　　大阪市中央区北浜一丁目　上新スポーツ御中
+　　大阪市福島区玉川三丁目　山田産業御中
+　　大阪市北区梅田三丁目　大山スポーツ御中
+　　大阪市北区堂島二丁目　三光スポーツ御中
+　　大阪市北区天神橋二丁目　ビクトリア御中
+　　大阪市北区中崎二丁目　三州スポーツ御中
+
+
+
+16) 以下のリストを出力するSQL文を作成せよ。
+
+SELECT ADDRESS||'	'|| CUST_NAME||'御中' 顧客一覧
+FROM CUSTOMER;
+
+　　顧客一覧
+　　----------------------------------------------------------------
+　　大阪市中央区北浜一丁目　上新スポーツ御中
+　　大阪市福島区玉川三丁目　山田産業御中
+　　大阪市北区梅田三丁目　　大山スポーツ御中
+　　大阪市北区堂島二丁目　　三光スポーツ御中
+　　大阪市北区天神橋二丁目　ビクトリア御中
+　　大阪市北区中崎二丁目　　三州スポーツ御中
+
+
+
+17) 以下のリストを出力するSQL文を作成せよ。
+
+SQL> SELECT SUBSTR(ADDRESS,1,3)||'      '|| CUST_NAME||'御中' 顧客一覧
+  2  FROM CUSTOMER;
+
+　　顧客一覧
+　　----------------------
+　　大阪市　上新スポーツ
+　　大阪市　山田産業
+　　大阪市　大山スポーツ
+　　大阪市　三光スポーツ
+　　大阪市　ビクトリア
+　　大阪市　三州スポーツ
+
+
+
+18) 住所が'大阪市中央区' で始まる顧客の顧客ID(CUST_ID)と顧客名(CUST_NAME)と住所(ADDRESS)を出力せよ。
+
+
+SQL> SELECT CUST_ID 顧客ID,CUST_NAME 顧客名,ADDRESS 住所
+  2  FROM CUSTOMER
+  3  WHERE ADDRESS LIKE '大阪市中央区%';
+
+    顧客ID 顧客名         住所
+---------- -------------- ------------------------
+         1 上新スポーツ   大阪市中央区北浜一丁目
+
+**************************************************************************************:
+【提出用ファイル作成方法】
+
+提出用ファイルは、本テキストファイル上で以下のように、問題文、SQL文、実行結果の
+順に記述すること（課題提出ファイル上で切り張り(コピー＆ペースト)すればよい）。
+
+
+
+
+n)SALGRADEから列GRADEとLOSALのみを取り出せ。
+
+　　[出力形式]
+    GRADE     LOSAL 
+--------- --------- 
+
+
+
+　　↓↓↓↓
+
+
+
+n)SALGRADEから列GRADEとLOSALのみを取り出せ。
+
+  SQL> SELECT GRADE,LOSAL FROM SALGRADE;
+
+    GRADE     LOSAL 
+--------- --------- 
+        1       700 
+        2      1201 
+        3      1401 
+        4      2001 
+        5      3001 
+
+
+
+
+
+
+
+
+

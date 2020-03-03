@@ -1,0 +1,19 @@
+     1                          PRG0203	START
+     2  0000: 1010 000E         	LD	GR1,DATA1
+     3  0002: 1110 0011         	ST	GR1,AREA1
+     4  0004: 1010 000F         	LD	GR1,DATA2
+     5  0006: 1020 0010         	LD	GR2,DATA3
+     6  0008: 1110 0012         	ST	GR1,AREA2
+     7  000A: 1120 0013         	ST	GR2,AREA3
+     8  000C: 1432              	LD	GR3,GR2
+     9  000D: 8100              	RET
+    10                          ;
+    11  000E: 0031              DATA1	DC	'1'
+    12  000F: 0032              DATA2	DC	'2'
+    13  0010: 0033              DATA3	DC	'3'
+    14  0011: 0031              AREA1	DS	1
+    15  0012: 0032              AREA2	DS	1
+    16  0013: 0000              AREA3	DS	1
+    17                          	END
+
+      0 Errors

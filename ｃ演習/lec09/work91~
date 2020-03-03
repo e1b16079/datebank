@@ -1,0 +1,15 @@
+#include<stdio.h>
+#define NUMBER 8
+int main(void){
+
+   int data[NUMBER], i, ave, sum;
+
+   for(i=0;i<NUMBER;i++){
+     scanf("%d",&data[i]);
+     sum = sum + data[i];
+   }
+
+   ave = sum / NUMBER;
+
+   return 0;
+}

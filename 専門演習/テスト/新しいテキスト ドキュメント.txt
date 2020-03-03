@@ -1,0 +1,112 @@
+1.
+SELECT DISTINCT 工程名
+FROM 作業報告_W NATURAL JOIN 社員_W
+	        NATURAL JOIN 工程_W
+WHERE 氏名 NOT LIKE '横山隆';
+
+2.
+SELECT 顧客ID,住所
+FROM 顧客_W
+WHERE 顧客名 = '三和産業';
+
+3.
+SELECT 氏名
+FROM 社員_W
+WHERE 社員コード　IN
+(SELECT リーダー
+FROM 社員_W NATURAL JOIN 所属_W
+WHERE 社員コード = 20040001);
+
+4.
+SELECT 顧客ID,COUNT(*) 受注回数
+FROM プロジェクト_W 
+GROUP BY 顧客ID
+ORDER BY 顧客ID ;
+
+5.
+SELECT 社員コード,氏名, 回数
+FROM 社員_W,(SELECT リーダー,COUNT(*) 回数
+	FROM プロジェクト_W
+	GROUP BY リーダー
+	)
+WHERE リーダー = 社員コード
+AND   回数 >= 2;
+
+6.
+SELECT 社員コード,氏名,ランク
+FROM 社員_W
+WHERE 氏名 LIKE '佐藤%';
+
+7.
+SELECT プロジェクト名
+FROM プロジェクト_W NATURAL JOIN スケジュール_W
+WHERE 工程終了日-工程開始日 = (SELECT MAX(工程終了日-工程開始日)
+				FROM スケジュール_W
+				WHERE 工程コード = 'SI')
+AND 工程コード = 'SI';
+
+8.
+SELECT 顧客名,住所
+FROM プロジェクト_W NATURAL JOIN 顧客_W
+WHERE プロジェクト名 = '定期券発券システム';
+
+
+9.
+SELECT PID,工程コード,工程予算
+FROM スケジュール_W
+WHERE 工程予算 = (SELECT MAX(工程予算)
+				FROM スケジュール_W);
+
+
+10.
+SELECT 工程コード,SUM(作業時間) 総作業時間
+FROM 作業報告_W NATURAL JOIN 社員_W
+WHERE 氏名 = '荒川弘樹'
+GROUP BY 工程コード;
+
+11.
+SELECT プロジェクト名,終了日
+FROM プロジェクト_W
+WHERE 終了日 = (SELECT MIN(終了日)
+		FROM プロジェクト_W
+		);
+
+12.
+SELECT 氏名
+FROM 社員_W, プロジェクト_W
+WHERE 社員コード = リーダー
+AND プロジェクト名 = '給与システム';
+
+14.
+SELECT プロジェクト名,終了予定日
+FROM プロジェクト_W
+WHERE 終了日 IS NULL
+AND 顧客ID IN(SELECT 顧客ID
+		FROM 顧客_W
+		WHERE 住所='東京都');
+
+15.
+SELECT 報告ID,プロジェクト名,工程名,作業時間
+FROM 作業報告_W　NATURAL JOIN 社員_W
+		 NATURAL JOIN 工程_W
+WHERE 氏名='鈴木一郎'
+AND 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

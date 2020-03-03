@@ -1,0 +1,16 @@
+     1                          PRG0206	START
+     2  0000: 1010 000B         	LD	GR1,ORG1
+     3  0002: 1110 000C         	ST	GR1,DST1
+     4  0004: 1110 000D         	ST	GR1,DST2
+     5  0006: 1110 000E         	ST	GR1,DST3
+     6  0008: 1110 000F         	ST	GR1,DST4
+     7  000A: 8100              	RET
+     8                          ;
+     9  000B: 0078              ORG1	DC	'x'
+    10  000C: 0000              DST1	DS	1
+    11  000D: 0000              DST2	DS	1
+    12  000E: 0000              DST3	DS	1
+    13  000F: 0000              DST4	DS	1
+    14                          	END
+
+      0 Errors

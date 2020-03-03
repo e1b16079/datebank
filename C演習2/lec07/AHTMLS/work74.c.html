@@ -1,0 +1,31 @@
+<!-- Generator: GNU source-highlight 3.1.8
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre onMouseDown="return false;" onSelectStart="return false"><tt><font color="#000000">01:</font> <b><font color="#000080">#include</font></b> <font color="#FF0000">&lt;stdio.h&gt;</font>
+<font color="#000000">02:</font> 
+<font color="#000000">03:</font> <font color="#009900">int</font> <b><font color="#000000">main</font></b><font color="#990000">(</font><font color="#009900">void</font><font color="#990000">)</font> <font color="#FF0000">{</font>
+<font color="#000000">04:</font>   <font color="#009900">int</font> x <font color="#990000">=</font> <font color="#993399">77</font><font color="#990000">;</font>
+<font color="#000000">05:</font>   <font color="#009900">int</font> tmp<font color="#990000">;</font>
+<font color="#000000">06:</font>   <font color="#009900">int</font> y <font color="#990000">=</font> <font color="#993399">115</font><font color="#990000">;</font>
+<font color="#000000">07:</font>   <font color="#009900">int</font> <font color="#990000">*</font>p <font color="#990000">=</font> <font color="#990000">&amp;</font>tmp<font color="#990000">;</font>
+<font color="#000000">08:</font> 
+<font color="#000000">09:</font>   
+<font color="#000000">10:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"変数  アドレス  値</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">);</font>
+<font color="#000000">11:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"x     %p  %d</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>x<font color="#990000">,</font> x<font color="#990000">);</font>
+<font color="#000000">12:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"y     %p  %d</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>y<font color="#990000">,</font> y<font color="#990000">);</font>
+<font color="#000000">13:</font> 
+<font color="#000000">14:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"</font><font color="#CC33CC">\t</font><font color="#FF0000">x と y を交換</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">);</font>
+<font color="#000000">15:</font> 
+<font color="#000000">16:</font>   <font color="#990000">*</font>p <font color="#990000">=</font> x<font color="#990000">;</font>
+<font color="#000000">17:</font>   x <font color="#990000">=</font> y<font color="#990000">;</font>
+<font color="#000000">18:</font>   y <font color="#990000">=</font> <font color="#990000">*</font>p<font color="#990000">;</font>
+<font color="#000000">19:</font> 
+<font color="#000000">20:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"x     %p  %d</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>x<font color="#990000">,</font> x<font color="#990000">);</font>
+<font color="#000000">21:</font>   <b><font color="#000000">printf</font></b><font color="#990000">(</font><font color="#FF0000">"y     %p  %d</font><font color="#CC33CC">\n</font><font color="#FF0000">"</font><font color="#990000">,</font> <font color="#990000">&amp;</font>y<font color="#990000">,</font> y<font color="#990000">);</font>
+<font color="#000000">22:</font> 
+<font color="#000000">23:</font>   
+<font color="#000000">24:</font>   <b><font color="#0000FF">return</font></b> <font color="#993399">0</font><font color="#990000">;</font>
+<font color="#000000">25:</font> <font color="#FF0000">}</font>
+<font color="#000000">26:</font> 
+<font color="#000000">27:</font> </tt></pre>

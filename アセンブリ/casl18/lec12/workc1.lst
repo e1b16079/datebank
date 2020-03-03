@@ -1,0 +1,61 @@
+     1                          ;
+     2                          ;  学生番号：B16079  氏名：前田　剛志
+     3                          ;
+     4                          PRG1201	START
+     5  0000: 1000 0043         	LD	GR0,YEAR
+     6  0002: 1210 0004         	LAD	GR1,4
+     7  0004: 8000 0038         	CALL	AMARI
+     8  0006: 4000 0050         	CPA	GR0,=0
+     9  0008: 6500 002B         	JPL	HEI
+    10  000A: 1000 0043         	LD	GR0,YEAR
+    11  000C: 1210 0064         	LAD	GR1,100
+    12  000E: 8000 0038         	CALL	AMARI
+    13  0010: 4000 0050         	CPA	GR0,=0
+    14  0012: 6500 001E         	JPL	URU
+    15  0014: 1000 0043         	LD	GR0,YEAR
+    16  0016: 1210 0190         	LAD	GR1,400
+    17  0018: 8000 0038         	CALL	AMARI
+    18  001A: 4000 0050         	CPA	GR0,=0
+    19  001C: 6500 002B         	JPL	HEI
+    20                          URU	OUT	URUU,LEN1
+        001E: 7001 0000       1 URU	PUSH    0,GR1
+        0020: 7002 0000       1    	PUSH    0,GR2
+        0022: 1210 0044       1    	LAD     GR1,URUU    
+        0024: 1220 004E       1    	LAD     GR2,LEN1    
+        0026: F000 0002       1    	SVC     2
+        0028: 7120            1    	POP     GR2
+        0029: 7110            1    	POP     GR1
+    21  002A: 8100              	RET
+    22                          HEI	OUT	HEINEN,LEN2
+        002B: 7001 0000       1 HEI	PUSH    0,GR1
+        002D: 7002 0000       1    	PUSH    0,GR2
+        002F: 1210 0048       1    	LAD     GR1,HEINEN  
+        0031: 1220 004F       1    	LAD     GR2,LEN2    
+        0033: F000 0002       1    	SVC     2
+        0035: 7120            1    	POP     GR2
+        0036: 7110            1    	POP     GR1
+    23  0037: 8100              	RET
+    24  0038: 1230 0000         AMARI	LAD	GR3,0
+    25  003A: 2501              LOOP	SUBA	GR0,GR1
+    26  003B: 4000 0050         	CPA	GR0,=0
+    27  003D: 6500 003A         	JPL	LOOP
+    28  003F: 6300 003A         	JZE	LOOP
+    29  0041: 2401              	ADDA	GR0,GR1
+    30  0042: 8100              	RET
+    31  0043: 0640              YEAR	DC	1600
+    32  0044: 0055              URUU	DC	'URUU'
+        0045: 0052
+        0046: 0055
+        0047: 0055
+    33  0048: 0048              HEINEN	DC	'HEINEN'
+        0049: 0045
+        004A: 0049
+        004B: 004E
+        004C: 0045
+        004D: 004E
+    34  004E: 0004              LEN1	DC	4
+    35  004F: 0006              LEN2	DC	6
+        0050: 0000              =0	DC	0
+    36                          	END
+
+      0 Errors

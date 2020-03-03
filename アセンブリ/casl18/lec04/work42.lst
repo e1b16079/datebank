@@ -1,0 +1,13 @@
+     1                          PRG0403	START
+     2  0000: 1240 CDEF         	LAD	GR4,#CDEF
+     3  0002: 1250 0F0F         	LAD	GR5,#0F0F
+     4  0004: 1260 CDEF         	LAD	GR6,#CDEF
+     5  0006: 1270 0F0F         	LAD	GR7,#0F0F
+     6  0008: 5040 0005         	SLA	GR4,5
+     7  000A: 5050 0005         	SLA	GR5,5
+     8  000C: 5160 0005         	SRA	GR6,5
+     9  000E: 5170 0005         	SRA	GR7,5
+    10  0010: 8100              	RET
+    11                          	END
+
+      0 Errors

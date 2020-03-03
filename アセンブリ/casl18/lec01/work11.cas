@@ -1,0 +1,4 @@
+PRG0101 START	;
+	NOP	;
+	RET	;
+	END	;
